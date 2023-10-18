@@ -1,0 +1,14 @@
+.text-centered{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.accordion-box{
+    box-shadow: none !important;
+    border-top: 1px solid #5454;
+    padding: 10px 30px 10px 0px;
+}
+.accordian-box-bottom{
+    border-bottom: 1px solid #5454;
+}

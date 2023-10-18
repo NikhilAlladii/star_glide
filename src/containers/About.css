@@ -1,0 +1,80 @@
+.tabs-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem 3rem 0rem 3rem;
+}
+.each-tab {
+  border-bottom: 2px solid #a6a1a1;
+  color: #a6a1a1;
+  font-size: 20px !important;
+}
+
+.about-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.cards-container {
+  display: flex;
+  /* padding: 0rem 3rem 3rem 3rem; */
+}
+.tab-text {
+  color: #545454;
+  font-size: 18px;
+  padding: 0rem 2rem;
+}
+
+.cards-container a {
+  color: #bed245;
+  padding: 0.5rem 2rem;
+}
+
+.about-image {
+  height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+}
+
+.about-home-one {
+  position: relative;
+  /* width: 100%; */
+  max-height: none;
+  background-color: #325b81;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-height: 512px;
+}
+
+
+
+.about-home-two {
+  left: 45%;
+  max-height: 60%;
+  position: absolute;
+  top: 50%;
+  /* width: 60%; */
+  object-fit: cover;
+}
+
+.group-images {
+  margin-bottom: 4.75%;
+  padding-right: 3%;
+  position: relative;
+}
+
+.about-image-container{
+    position: relative;
+}
+
+.about-image-text{
+    position: absolute;
+    left: 10%;
+    bottom: 30%;
+}

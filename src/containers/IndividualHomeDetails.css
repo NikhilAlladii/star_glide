@@ -1,0 +1,225 @@
+.home-div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 3rem 0rem 3.125rem 3.25rem;
+}
+
+.home-details-div {
+  display: flex;
+  align-items: center;
+}
+
+.each-home-details-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #dedede;
+  margin: 0rem 1rem;
+  padding: 0.5rem 1.5rem 0rem 0rem;
+}
+
+.each-home-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px !important;
+  padding: 1.5rem 0rem 1.2rem 0rem;
+}
+
+.employee-image {
+  border-radius: 50%;
+  width: 118px;
+  height: 118px;
+}
+.number-link {
+  color: #cfe548;
+  display: inline-block;
+  margin-top: 5px;
+  text-decoration: none;
+}
+
+.address-text {
+  color: #bfbfc0;
+  /* margin-bottom: 2rem; */
+  font-size: 10px;
+}
+.house-number-text {
+  margin-top: 5px !important;
+  font-size: 1rem !important;
+}
+.address-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.hours-text {
+  font-size: 0.7rem !important;
+  margin-bottom: 0.8rem !important;
+  margin-top: 2rem !important;
+  font-weight: 700px;
+  color: rgb(191, 191, 191) !important;
+  font-size: 12px !important;
+}
+
+.centered-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qualified-button {
+  padding: 1rem 3rem 1rem 3rem !important;
+  background-color: #bdd437 !important;
+}
+
+.home-plans-text {
+  font-size: 14px;
+  color: #bfbfc0;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.find-home-text {
+  font-size: 60px !important;
+  color: #848484 !important;
+  font-weight: 700;
+}
+.home-text {
+  color: #cfe548;
+}
+
+.each-home-image {
+  height: 350px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-bottom-text {
+  position: absolute;
+  letter-spacing: 0.1em;
+  bottom: 0px;
+  background-color: rgb(151, 183, 0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0rem 0rem 0rem 2.5rem;
+}
+
+.bottom-left-text {
+  color: rgb(255, 255, 255);
+  font-size: 12px !important;
+  letter-spacing: 0.15em !important;
+  margin-right: 48px !important;
+  text-transform: uppercase;
+}
+
+.row-text {
+  display: flex;
+  align-items: center;
+  /* padding: 2rem; */
+}
+.row-text img {
+  width: 4.25rem;
+  height: 4.25rem;
+}
+
+.bottom-left-content {
+  display: flex;
+}
+
+.bottom-right-content {
+  display: flex;
+}
+.row-text-first {
+  background-color: rgb(210, 237, 43);
+  padding: 0px 2rem;
+}
+.row-text-second {
+  background-color: rgb(231, 253, 94);
+  padding: 0rem 2rem;
+}
+
+.top-button {
+  position: absolute;
+  top: 5%;
+  left: 3%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 15px 25px 12px;
+  border-radius: 5px;
+}
+.top-button-text {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+}
+
+.centered-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.centered-box-text {
+  color: rgb(255, 255, 255);
+  line-height: 0.85;
+  font-size: 80px !important;
+  margin-bottom: 0px;
+  font-weight: 700 !important;
+  padding: 0px 10px;
+  pointer-events: auto;
+}
+
+.box-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.box {
+  /* width: 100px; */
+  height: 100px;
+  transition: all 1s;
+}
+
+.hovered-box {
+  height: 100px;
+}
+
+.home-background-image {
+  background-size: cover;
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  position: relative;
+  align-items: flex-end;
+  height: 1096px;
+  z-index: 0;
+}
+
+.your-target-element {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.your-target-element::-webkit-scrollbar {
+  width: 0.5em; /* Adjust as needed */
+}
+
+.your-target-element::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Set to your background color */
+}

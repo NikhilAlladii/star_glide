@@ -1,0 +1,53 @@
+.life-group-logo img {
+  object-fit: contain;
+  max-width: 260px;
+  height: 50px;
+  margin: auto;
+}
+
+.life-group-logo {
+  height: 100%;
+}
+.logo-links {
+  display: flex;
+  cursor: pointer;
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fafafa;
+  padding: 50px 40px;
+}
+
+.copyrightLinks-div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 1rem;
+  color: #545454;
+}
+
+.copyrightLinks {
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 1rem;
+  color: #545454;
+  padding: 0px 15px 0px 0px;
+}
+.copyrightCaption {
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 1rem;
+  color: #545454;
+}
+
+.about-footer-link {
+  text-decoration: none;
+  padding: 0px 10px;
+  color: #545454;
+  font-size: 15px;
+  font-weight: 300;
+}

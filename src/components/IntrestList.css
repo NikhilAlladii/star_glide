@@ -1,0 +1,16 @@
+.intrest-list-box{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.intrest-list-box-left{
+    width: 70%;
+}
+.intrest-list-box .intrest-button{
+    background-color: #ffffff;
+    padding: 15px 25px 12px;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-size: 14px !important;
+    letter-spacing: .2em !important;
+}

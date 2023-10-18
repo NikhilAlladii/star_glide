@@ -1,0 +1,10 @@
+.path-image{
+    object-fit: cover;
+    width: 100%;
+    height: 321px;
+    margin-bottom: 2rem;
+}
+.path-title{
+    color: black;
+    margin-bottom: 0.5rem !important;
+}
