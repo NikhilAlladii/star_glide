@@ -19,7 +19,7 @@ const fetchHomeSuccess = (home) => {
 export const fetchHomes = () => {
   return (dispatch) => {
     axios
-      .get(`http://192.168.0.192:3001/homes`)
+      .get(`https://star-glide-be-services.onrender.com/homes`)
       .then((res) => {
         const homes = res.data;
         dispatch(fetchHomesSuccess(homes));
@@ -33,7 +33,7 @@ export const fetchHomes = () => {
 export const fetchHome = (homeId) => {
   return (dispatch) => {
     axios
-      .get(`http://192.168.0.192:3001/home/${homeId}`)
+      .get(`https://star-glide-be-services.onrender.com/home/${homeId}`)
       .then((res) => {
         const homes = res.data;
         dispatch(fetchHomeSuccess(homes));
