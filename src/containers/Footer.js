@@ -5,6 +5,7 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 function Footer() {
@@ -30,6 +31,12 @@ function Footer() {
     "Sitemap",
     "Where We Build",
   ];
+
+  const navigate = useNavigate();
+
+  const goToYourHomePage = () => {
+    navigate(`/your-new-home`);
+  };
 
   return (
     <Box>
@@ -79,7 +86,13 @@ function Footer() {
           </div>
           <div>
             {footer_links.map((link, i) => (
-              <Typography key={i} className="copyrightLinks" variant="caption">
+              <Typography
+                key={i}
+                className="copyrightLinks"
+                variant="caption"
+                sx={{ cursor: "pointer" }}
+                onClick={goToYourHomePage}
+              >
                 {link}
               </Typography>
             ))}
