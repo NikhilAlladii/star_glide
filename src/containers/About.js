@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import { Box, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import "./Footer.js";
@@ -51,7 +52,7 @@ function About() {
 
   return (
     <Box>
-      <Box className="about-image-container">
+      {/* <Box className="about-image-container">
         <img
           src="https://www.tripointehomes.com/wp-content/uploads/2020/12/AU_06_RT.jpg"
           alt="home"
@@ -62,6 +63,22 @@ function About() {
             LOVE A GOOD STORY? HERE’S OURS.
           </Typography>
           <Typography variant="h2" color="#848484" fontWeight="700">
+            About Us
+          </Typography>
+        </Box>
+      </Box> */}
+
+      <Box className="image-container-one">
+        <img
+          src="https://www.tripointehomes.com/wp-content/uploads/2020/12/about-us-hero-1903x610-1.jpg"
+          alt="Your Image"
+          className="clipped-image"
+        />
+        <Box className="about-image-text">
+          <Typography color="#BFBFC0" variant="caption">
+            LOVE A GOOD STORY? HERE’S OURS.
+          </Typography>
+          <Typography variant="h2" color="rgb(207, 229, 72)" fontWeight="500">
             About Us
           </Typography>
         </Box>
