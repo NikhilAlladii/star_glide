@@ -38,6 +38,9 @@ function Footer() {
     navigate(`/your-new-home`);
   };
 
+  const goToFinanacePage = () => {
+    navigate("financing-your-home");
+  };
   return (
     <Box>
       <Box className="footer-links">
@@ -66,8 +69,8 @@ function Footer() {
         </Box>
       </Box>
 
-      <Box sx={{ display: "flex", alignItems: "center", padding: "39px 5% 0" }}>
-        <Box sx={{ opacity: "1", color: "#545454" }}>
+      <Box sx={{ display: "flex", alignItems: "center", padding: "39px 5% 0",cursor:"pointer" }}>
+        <Box sx={{ opacity: "1", color: "#545454" }} onClick={goToYourHomePage} >
           <YouTubeIcon sx={{ fontSize: "35px", marginRight: "15px" }} />
           <InstagramIcon sx={{ fontSize: "35px", marginRight: "15px" }} />
           <LinkedInIcon sx={{ fontSize: "35px", marginRight: "15px" }} />
