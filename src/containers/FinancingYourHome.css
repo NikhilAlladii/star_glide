@@ -1,0 +1,66 @@
+.right-container {
+  display: flex;
+  flex-direction: column !important;
+  justify-content: center;
+  padding: 3rem;
+}
+.tab-text {
+  display: flex;
+  padding: 0px !important;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 20px !important;
+  font-weight: 500;
+}
+.finance-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.each-tab-styling {
+  border-top: 1px solid #d2d0d0;
+  cursor: pointer;
+  padding: 1rem 0rem;
+}
+.each-tab-styling:hover {
+  color: #545454 !important;
+}
+.arrow-box {
+  border: 1px solid #d2d0d0;
+  padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+  margin-left: 15%;
+}
+
+.financing-grid-images {
+  width: 100%;
+  height: 321px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+.form-container {
+  position: relative;
+}
+.inside-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center-box-financing {
+  height: 100%; /* Match the height of the right-side image */
+  padding: 3.25rem;
+}
+
+.image-container-financing {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.button-centered{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

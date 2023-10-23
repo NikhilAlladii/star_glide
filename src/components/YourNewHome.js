@@ -127,8 +127,12 @@ function YourNewHome() {
       </Box>
 
       <Box sx={{ padding: "4rem 3rem", margin: "4rem 0rem" }}>
-        <Box >
-          <Typography variant="h2" color="rgb(132, 132, 132)" paddingBottom="2%">
+        <Box>
+          <Typography
+            variant="h2"
+            color="rgb(132, 132, 132)"
+            paddingBottom="2%"
+          >
             Digital Home
             <span style={{ color: "rgb(207, 229, 72)" }}> Shopping Tools</span>
           </Typography>
@@ -136,7 +140,12 @@ function YourNewHome() {
         <Box>
           <Grid container display="flex" alignItems="center">
             <Grid item md={6}>
-              <Typography color="#bfbfc0" variant="h6" paddingRight= "15px" fontSize="18px">
+              <Typography
+                color="#bfbfc0"
+                variant="h6"
+                paddingRight="15px"
+                fontSize="18px"
+              >
                 SIX DIGITAL TOOLS FOR YOUR FAVORITE NEIGHBORHOOD
               </Typography>
             </Grid>

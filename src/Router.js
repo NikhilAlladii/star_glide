@@ -4,6 +4,7 @@ import Homes from "./containers/Homes";
 import IndividualHomeDetails from "./containers/IndividualHomeDetails";
 import About from "./containers/About";
 import YourNewHome from "./components/YourNewHome";
+import FinancingYourHome from "./containers/FinancingYourHome";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
   {
     path: "/your-new-home",
     element: <YourNewHome />,
+    errorElement: <Error />,
+  },
+  {
+    path: "/financing-your-home",
+    element: <FinancingYourHome />,
     errorElement: <Error />,
   },
 ]);
