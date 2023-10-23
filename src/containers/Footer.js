@@ -70,7 +70,7 @@ function Footer() {
       </Box>
 
       <Box sx={{ display: "flex", alignItems: "center", padding: "39px 5% 0",cursor:"pointer" }}>
-        <Box sx={{ opacity: "1", color: "#545454" }} onClick={goToYourHomePage} >
+        <Box sx={{ opacity: "1", color: "#545454" }} onClick={goToFinanacePage} >
           <YouTubeIcon sx={{ fontSize: "35px", marginRight: "15px" }} />
           <InstagramIcon sx={{ fontSize: "35px", marginRight: "15px" }} />
           <LinkedInIcon sx={{ fontSize: "35px", marginRight: "15px" }} />
