@@ -166,6 +166,10 @@ function Homes() {
     setExpanded(!expanded);
   };
 
+  const gotoLivingSmartPage = () => {
+    navigate(`/livingsmart`);
+  };
+
   const handleSelecetdState = (state) => {
     setSelecetedState(state.coordinates);
     setBedRoomData(state.state);
@@ -360,7 +364,9 @@ function Homes() {
                 color: tab === "home" ? "#545454" : "#8c8c8c !important",
               }}
             >
-              <StyledTabs>91 Homes & Floorplans</StyledTabs>
+              <StyledTabs onClick={gotoLivingSmartPage}>
+                91 Homes & Floorplans
+              </StyledTabs>
             </Box>
           </Box>
 

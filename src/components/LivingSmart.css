@@ -22,3 +22,15 @@
     justify-content: center;
     border-radius: 0.5rem;
 }
+
+
+.livingsmart-more-button{
+  margin-top: 2rem !important;
+  width: 80%;
+  padding: 15px 25px 12px;
+  background-color: #bdd437;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+}

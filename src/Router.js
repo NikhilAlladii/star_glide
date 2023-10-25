@@ -5,6 +5,7 @@ import IndividualHomeDetails from "./containers/IndividualHomeDetails";
 import About from "./containers/About";
 import YourNewHome from "./components/YourNewHome";
 import FinancingYourHome from "./containers/FinancingYourHome";
+import LivingSmart from "./containers/LivingSmart";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
   {
     path: "/financing-your-home",
     element: <FinancingYourHome />,
+    errorElement: <Error />,
+  },
+  {
+    path: "/livingsmart",
+    element: <LivingSmart />,
     errorElement: <Error />,
   },
 ]);
