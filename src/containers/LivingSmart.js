@@ -7,6 +7,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import WaterDropOutlinedIcon from "@mui/icons-material/WaterDropOutlined";
 import LocalFloristIcon from "@mui/icons-material/LocalFlorist";
 import Footer from "./Footer";
+import theme from "../theme/theme";
 
 function LivingSmart() {
   const tabs = [
@@ -62,7 +63,7 @@ function LivingSmart() {
           className="clipped-image"
         />
         <Box className="about-image-text">
-          <Typography variant="h3" color="#848484" fontWeight="500">
+          <Typography variant="h3" color={theme.palette.primary.main} fontWeight="500">
             LivingSmart
           </Typography>
         </Box>
@@ -105,17 +106,17 @@ function LivingSmart() {
       <Box>
         <Grid container padding="4rem 3.25rem" margin="4rem 0rem">
           <Grid item md={5}>
-            <Typography variant="body1" color="#848484">
+            <Typography variant="body1" color={theme.palette.primary.main}>
               LIVINGSMART®
             </Typography>
-            <Typography variant="h3" color="#848484">
+            <Typography variant="h3" color={theme.palette.primary.main}>
               Well-Being
               <br />
               <span style={{ color: "rgb(207, 229, 72)" }}>by Design</span>
             </Typography>
           </Grid>
           <Grid item md={7}>
-            <Typography color="#848484">
+            <Typography color={theme.palette.primary.main}>
               We’ve been a leader in green building for over 20 years and our
               commitment is always expanding. It always will, with a steadfast
               passion for improving the quality of life for our home owners and
@@ -139,7 +140,7 @@ function LivingSmart() {
               variant="h6"
               className="each-tab"
               style={{
-                color: tab.title === selectedTab ? "#545454" : "#a6a1a1",
+                color: tab.title === selectedTab ? theme.palette.secondary.main : "#a6a1a1",
                 borderBottom:
                   tab.title === selectedTab
                     ? "2px solid #bed245"
@@ -195,7 +196,7 @@ function LivingSmart() {
       <Box>
         <Grid container>
           <Grid item md={6} className="center-box">
-            <Typography variant="body1" margin="0.5rem 0rem" color="#848484">
+            <Typography variant="body1" margin="0.5rem 0rem" color={theme.palette.primary.main}>
               EXPERIENCE LIVINGSMART®
             </Typography>
             <Typography color="rgb(132, 132, 132)" variant="h3">
@@ -206,7 +207,7 @@ function LivingSmart() {
               </span>
             </Typography>
 
-            <Typography variant="body1" color="#848484" margin="1rem 0rem">
+            <Typography variant="body1" color={theme.palette.primary.main} margin="1rem 0rem">
               Take an immersive walk through a Tri Pointe Homes floorplan with
               LivingSmart®. Keep an eye out for “Easter Eggs” along the way that
               will highlight the many innovative features that make a
@@ -236,7 +237,7 @@ function LivingSmart() {
             />
           </Grid>
           <Grid item md={6} className="center-box">
-            <Typography variant="body1" margin="0.5rem 0rem" color="#848484">
+            <Typography variant="body1" margin="0.5rem 0rem" color={theme.palette.primary.main}>
               BETTER INSIDE AND OUT
             </Typography>
             <Typography color="rgb(132, 132, 132)" variant="h3">
@@ -246,7 +247,7 @@ function LivingSmart() {
               </span>
             </Typography>
 
-            <Typography variant="body1" color="#848484" margin="1rem 0rem">
+            <Typography variant="body1" color={theme.palette.primary.main} margin="1rem 0rem">
               Take a glimpse through the walls to see examples of how
               LivingSmart® features improve everyday life for years to come.
               LivingSmart® features may vary by community.
@@ -273,7 +274,7 @@ function LivingSmart() {
               <span style={{ color: "rgb(190, 211, 68)" }}>pioneer</span>
             </Typography>
 
-            <Typography variant="body1" color="#848484" margin="1rem 0rem">
+            <Typography variant="body1" color={theme.palette.primary.main} margin="1rem 0rem">
               🞂 2003-2006 EPA Energy Star® Partner of the Year 1 <br />
               🞂 2004 “Zero Energy Home” showcased at International Builders Show
               <br /> 🞂 2005 First builder to receive CA Governor’s Environmental
@@ -302,7 +303,7 @@ function LivingSmart() {
               <span style={{ color: "rgb(190, 211, 68)" }}> green to gold</span>
             </Typography>
 
-            <Typography variant="body1" color="#848484" margin="1rem 0rem">
+            <Typography variant="body1" color={theme.palette.primary.main} margin="1rem 0rem">
               🞂 2003-2006 EPA Energy Star® Partner of the Year 1 <br />
               🞂 2004 “Zero Energy Home” showcased at International Builders Show
               <br /> 🞂 2005 First builder to receive CA Governor’s Environmental
@@ -327,7 +328,7 @@ function LivingSmart() {
               The ultimate win-win
             </Typography>
 
-            <Typography variant="body1" color="#848484" margin="1rem 0rem">
+            <Typography variant="body1" color={theme.palette.primary.main} margin="1rem 0rem">
               🞂 2020 Indoor airPLUS Leader Award
               <br />
               🞂 2020 LEED Homes Power Builder
@@ -355,7 +356,7 @@ function LivingSmart() {
             />
           </Grid>
           <Grid item md={5} className="center-box">
-            <Typography variant="body1" margin="0.5rem 0rem" color="#848484">
+            <Typography variant="body1" margin="0.5rem 0rem" color={theme.palette.primary.main}>
               EXPERIENCE LIVINGSMART®
             </Typography>
             <Typography color="rgb(132, 132, 132)" variant="h3">
@@ -366,7 +367,7 @@ function LivingSmart() {
               </span>
             </Typography>
 
-            <Typography variant="body1" color="#848484" margin="1rem 0rem">
+            <Typography variant="body1" color={theme.palette.primary.main} margin="1rem 0rem">
               Take an immersive walk through a Tri Pointe Homes floorplan with
               LivingSmart®. Keep an eye out for “Easter Eggs” along the way that
               will highlight the many innovative features that make a
@@ -395,11 +396,11 @@ function LivingSmart() {
               <span style={{ color: "rgb(190, 211, 68)" }}>rating</span>
             </Typography>
 
-            <Typography variant="body1" margin="0.5rem 0rem" color="#848484">
+            <Typography variant="body1" margin="0.5rem 0rem" color={theme.palette.primary.main}>
               Measuring success
             </Typography>
 
-            <Typography variant="body1" color="#848484" margin="1rem 0rem">
+            <Typography variant="body1" color={theme.palette.primary.main} margin="1rem 0rem">
               We use the HERS (Home Energy Rating System) rating metric to
               measure our LivingSmart® building performance. A HERS rating is a
               standard measurement of a home’s energy efﬁciency. A typical

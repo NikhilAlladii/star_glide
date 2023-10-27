@@ -5,6 +5,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "./Footer.js";
 import Footer from "./Footer.js";
 import InterestRate from "../components/IntrestRate";
+import theme from "../theme/theme";
 
 function FinancingYourHome() {
   const tabs = [
@@ -78,7 +79,11 @@ function FinancingYourHome() {
             HOME FINANCING. TAILORED TO YOU.
           </Typography>
           <Typography variant="h3" color="rgb(207, 229, 72)" fontWeight="600">
-            Financing<span style={{ color: "#848484" }}> Your Home</span>
+            Financing
+            <span style={{ color: theme.palette.primary.main }}>
+              {" "}
+              Your Home
+            </span>
           </Typography>
         </Box>
       </Box>
@@ -99,7 +104,12 @@ function FinancingYourHome() {
               />
             </Box>
           </Grid>
-          <Grid item md={6} color="#848484" className="right-container">
+          <Grid
+            item
+            md={6}
+            color={theme.palette.primary.main}
+            className="right-container"
+          >
             <Typography variant="body1">
               THE FINANCING YOU NEED, ALL UNDER ONE ROOF
             </Typography>
@@ -144,10 +154,10 @@ function FinancingYourHome() {
                 key={i}
                 className="each-tab-styling"
                 onClick={() => setTab(eachTab)}
-                color={eachTab.title === tab.title ? "#545454" : "#d2d0d0"}
+                color={eachTab.title === tab.title ? theme.palette.secondary.main : "#d2d0d0"}
               >
                 <Typography
-                  color={eachTab.title === tab.title ? "#545454" : "#d2d0d0"}
+                  color={eachTab.title === tab.title ? theme.palette.secondary.main : "#d2d0d0"}
                   variant="h6"
                   marginBottom="1rem"
                 >
@@ -155,7 +165,7 @@ function FinancingYourHome() {
                 </Typography>
                 <Box
                   className="tab-text"
-                  color={eachTab.title === tab.title ? "#545454" : "#d2d0d0"}
+                  color={eachTab.title === tab.title ? theme.palette.secondary.main : "#d2d0d0"}
                 >
                   <Typography>
                     {tab.text === eachTab.text
@@ -186,12 +196,12 @@ function FinancingYourHome() {
               <Typography variant="body1">
                 FINANCING IN FOUR EASY STEPS
               </Typography>
-              <Typography variant="h3" color="#848484">
+              <Typography variant="h3" color={theme.palette.primary.main}>
                 The path{" "}
                 <span style={{ color: "rgb(207, 229, 72)" }}>home</span>
               </Typography>
             </Grid>
-            <Grid item md={7} color="#848484">
+            <Grid item md={7} color={theme.palette.primary.main}>
               <Typography>
                 Because Tri Pointe Connect is the affiliated mortgage company of
                 Tri Pointe Homes, we offer the benefit of an easy-to-understand,
@@ -213,7 +223,9 @@ function FinancingYourHome() {
                 <Typography variant="h6" color="balck" marginBottom="0.5rem">
                   {i + 1}. {home.title}
                 </Typography>
-                <Typography color="#848484">{home.text}</Typography>
+                <Typography color={theme.palette.primary.main}>
+                  {home.text}
+                </Typography>
               </Grid>
             ))}
           </Grid>
@@ -236,7 +248,7 @@ function FinancingYourHome() {
         </Box>
         <Box display="flex" justifyContent="space-between">
           <Box width="60%">
-            <Typography color="#545454">
+            <Typography color={theme.palette.secondary.main}>
               If you are serious about purchasing a new home from Tri Pointe
               Homes, and we think you are, getting pre-qualified and joining the
               priority group for your desired community will put you one step
@@ -338,15 +350,17 @@ function FinancingYourHome() {
 
       <Box padding="4rem 3.25rem" margin="4rem 0rem">
         <Box>
-          <Typography variant="h3" color="#545454" paddingBottom="1.5rem">
-            Helpful 
+          <Typography variant="h3" color={theme.palette.secondary.main} paddingBottom="1.5rem">
+            Helpful
             <span style={{ color: "rgb(207, 229, 72)" }}>
-               &nbsp;financing resources
+              &nbsp;financing resources
             </span>
           </Typography>
         </Box>
-        <Box >
-          <Typography variant="caption" color="#848484">HOMEBUYING GUIDES</Typography>
+        <Box>
+          <Typography variant="caption" color={theme.palette.primary.main}>
+            HOMEBUYING GUIDES
+          </Typography>
           {/* <Box borderTop="1px solid #545454"></Box> */}
         </Box>
       </Box>
@@ -370,10 +384,10 @@ function FinancingYourHome() {
 
           <Typography
             sx={{
-              color: "#545454",
+              color: theme.palette.secondary.main,
               margin: "1rem 0rem",
-              width:"38%",
-              borderBottom:"3px solid #bed245"
+              width: "38%",
+              borderBottom: "3px solid #bed245",
             }}
           >
             Download Resource
@@ -397,10 +411,10 @@ function FinancingYourHome() {
 
           <Typography
             sx={{
-              color: "#545454",
+              color: theme.palette.secondary.main,
               margin: "1rem 0rem",
-              width:"38%",
-              borderBottom:"3px solid #bed245"
+              width: "38%",
+              borderBottom: "3px solid #bed245",
             }}
           >
             Download Resource
@@ -425,10 +439,10 @@ function FinancingYourHome() {
 
           <Typography
             sx={{
-              color: "#545454",
+              color: theme.palette.secondary.main,
               margin: "1rem 0rem",
-              width:"38%",
-              borderBottom:"3px solid #bed245"
+              width: "38%",
+              borderBottom: "3px solid #bed245",
             }}
           >
             Download Resource

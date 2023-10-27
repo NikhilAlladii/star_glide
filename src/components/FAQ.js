@@ -10,6 +10,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import "./FAQ.css";
 import { useState } from "react";
+import theme from "../theme/theme";
 
 function FAQ() {
   const [expanded, setExpanded] = useState(false);
@@ -31,9 +32,9 @@ function FAQ() {
     <Box padding="6.25rem 8rem">
       <Box className="text-centered">
         <Typography variant="h3" color="#BED245" marginBottom="2%">
-          Frequently <span style={{ color: "#848484" }}>Asked Questions</span>
+          Frequently <span style={{ color: theme.palette.primary.main }}>Asked Questions</span>
         </Typography>
-        <Typography variant="body2" color="#545454">
+        <Typography variant="body2" color="theme.palette.primary.main">
           Here are some of the most common questions our homebuyers have before
           they get started—and the answers too, of course.
         </Typography>

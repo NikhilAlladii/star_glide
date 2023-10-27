@@ -5,8 +5,9 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import theme from "../theme/theme";
 
 function Footer() {
   const links = [
@@ -32,15 +33,15 @@ function Footer() {
     "Where We Build",
   ];
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const goToYourHomePage = () => {
-    navigate(`/your-new-home`);
-  };
+  // const goToYourHomePage = () => {
+  //   navigate(`/your-new-home`);
+  // };
 
-  const goToFinanacePage = () => {
-    navigate("financing-your-home");
-  };
+  // const goToFinanacePage = () => {
+  //   navigate("financing-your-home");
+  // };
   return (
     <Box>
       <Box className="footer-links">
@@ -57,11 +58,10 @@ function Footer() {
               key={i}
               sx={{
                 padding: "0px 10px",
-                color: "#545454",
+                color: theme.palette.secondary.main,
                 fontSize: "15px",
                 fontWeight: "300",
               }}
-              to="/about"
             >
               {link}
             </Link>
@@ -70,7 +70,7 @@ function Footer() {
       </Box>
 
       <Box sx={{ display: "flex", alignItems: "center", padding: "39px 5% 0",cursor:"pointer" }}>
-        <Box sx={{ opacity: "1", color: "#545454" }} onClick={goToFinanacePage} >
+        <Box sx={{ opacity: "1", color: theme.palette.secondary.main }} >
           <YouTubeIcon sx={{ fontSize: "35px", marginRight: "15px" }} />
           <InstagramIcon sx={{ fontSize: "35px", marginRight: "15px" }} />
           <LinkedInIcon sx={{ fontSize: "35px", marginRight: "15px" }} />
@@ -94,7 +94,7 @@ function Footer() {
                 className="copyrightLinks"
                 variant="caption"
                 sx={{ cursor: "pointer" }}
-                onClick={goToYourHomePage}
+                // onClick={goToYourHomePage}
               >
                 {link}
               </Typography>

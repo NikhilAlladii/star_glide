@@ -31,6 +31,8 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import statesAndCities from "../constants/StatesandCities";
 import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
+import "./Homes.css";
+import theme from "../theme/theme";
 
 const StyledMenu = styled(Menu)``;
 
@@ -166,9 +168,7 @@ function Homes() {
     setExpanded(!expanded);
   };
 
-  const gotoLivingSmartPage = () => {
-    navigate(`/livingsmart`);
-  };
+
 
   const handleSelecetdState = (state) => {
     setSelecetedState(state.coordinates);
@@ -187,6 +187,127 @@ function Homes() {
     dispatch(fetchHome(homeId));
   };
 
+  const states = [
+    {
+      state: "Arizona",
+      cities: [
+        {
+          name: "Phoenix Metro",
+        },
+      ],
+    },
+    {
+      state: "California",
+      cities: [
+        {
+          name: "Bay Area",
+        },
+        {
+          name: "Los Angeless Country",
+        },
+        {
+          name: "Orange Country",
+        },
+        {
+          name: "Riverside Country",
+        },
+        {
+          name: "Sacramento",
+        },
+        {
+          name: "San Berrnardino Country",
+        },
+        {
+          name: "San Diego Country",
+        },
+      ],
+    },
+    {
+      state: "Colorado",
+      cities: [
+        {
+          name: "Denver Metro",
+        },
+      ],
+    },
+    {
+      state: "District Of Columbia",
+      cities: [
+        {
+          name: "Washington D.C",
+        },
+      ],
+    },
+    {
+      state: "Maryland",
+      cities: [
+        {
+          name: "Montgomery Country",
+        },
+      ],
+    },
+    {
+      state: "Nevada",
+      cities: [
+        {
+          name: "Las Vegas",
+        },
+      ],
+    },
+    {
+      state: "North Carolina",
+      cities: [
+        {
+          name: "Charlotte",
+        },
+        {
+          name: "Raleigh",
+        },
+      ],
+    },
+    {
+      state: "South Carolina",
+      cities: [
+        {
+          name: "York Country",
+        },
+      ],
+    },
+    {
+      state: "Texas",
+      cities: [
+        {
+          name: "Austin",
+        },
+        {
+          name: "Dallas-Fort Worth",
+        },
+        {
+          name: "Houston",
+        },
+      ],
+    },
+    {
+      state: "Virginia",
+      cities: [
+        {
+          name: "Alexandria",
+        },
+        {
+          name: "Loudoun County",
+        },
+      ],
+    },
+    {
+      state: "Washington",
+      cities: [
+        {
+          name: "Greater Seattle Area",
+        },
+      ],
+    },
+  ];
+
   return (
     <Box className="container">
       <Grid container>
@@ -203,7 +324,7 @@ function Homes() {
             sx={{
               fontWeight: 500,
               lineHeight: "1.2",
-              color: "rgb(84 84 84)",
+              color: theme.palette.secondary.main,
               marginLeft: "1rem",
               marginTop: "2.5rem",
             }}
@@ -216,18 +337,22 @@ function Homes() {
               sx={{
                 fontWeight: 500,
                 lineHeight: "1.2",
-                color: "rgb(190 211 68)",
+                color: theme.palette.text.main,
                 marginLeft: "1rem",
                 marginTop: "0.5rem",
                 display: "flex",
               }}
               variant="h3"
             >
-              <span style={{ borderBottom: "1px solid rgb(235 235 235)" }}>
+              <span
+                style={{
+                  borderBottom: `1px solid ${theme.palette.border.main}`,
+                }}
+              >
                 Denver Metro, CO
               </span>
 
-              <Box sx={{}}>
+              <Box>
                 <CreateOutlinedIcon
                   sx={{
                     color: "black",
@@ -240,16 +365,74 @@ function Homes() {
               </Box>
             </StyledSelectTypography>
             <StyledMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
-              {statesAndCities?.map((state, i) => (
-                <MenuItem key={i} onClick={handleClose}>
-                  <Box>
-                    <Typography>{state?.state}</Typography>
-                    {state.cities?.map((cities, i) => (
-                      <Typography key={i}>{cities}</Typography>
+              <Box>
+                <Grid container spacing={4} padding="1rem">
+                  <Grid item md={3}>
+                    {states.slice(0, 2).map((state, i) => (
+                      <Box key={i} onClick={handleClose} className="homes-menu">
+                        <Typography className="homes-state">
+                          <b>{state.state}</b>
+                        </Typography>
+                        <Box>
+                          {state.cities.map((city) => (
+                            <Typography className="homes-city">
+                              {city.name}
+                            </Typography>
+                          ))}
+                        </Box>
+                      </Box>
                     ))}
-                  </Box>
-                </MenuItem>
-              ))}
+                  </Grid>
+                  <Grid item md={3}>
+                    {states.slice(2, 6).map((state, i) => (
+                      <Box key={i} onClick={handleClose} className="homes-menu">
+                        <Typography className="homes-state">
+                          <b>{state.state}</b>
+                        </Typography>
+                        <Box>
+                          {state.cities.map((city) => (
+                            <Typography className="homes-city">
+                              {city.name}
+                            </Typography>
+                          ))}
+                        </Box>
+                      </Box>
+                    ))}
+                  </Grid>
+                  <Grid item md={3}>
+                    {states.slice(6, 9).map((state, i) => (
+                      <Box key={i} onClick={handleClose} className="homes-menu">
+                        <Typography className="homes-state">
+                          <b>{state.state}</b>
+                        </Typography>
+                        <Box>
+                          {state.cities.map((city) => (
+                            <Typography className="homes-city">
+                              {city.name}
+                            </Typography>
+                          ))}
+                        </Box>
+                      </Box>
+                    ))}
+                  </Grid>
+                  <Grid item md={3}>
+                    {states.slice(9).map((state, i) => (
+                      <Box key={i} onClick={handleClose} className="homes-menu">
+                        <Typography className="homes-state">
+                          <b>{state.state}</b>
+                        </Typography>
+                        <Box>
+                          {state.cities.map((city) => (
+                            <Typography className="homes-city">
+                              {city.name}
+                            </Typography>
+                          ))}
+                        </Box>
+                      </Box>
+                    ))}
+                  </Grid>
+                </Grid>
+              </Box>
             </StyledMenu>
           </Box>
           <Box
@@ -275,14 +458,16 @@ function Homes() {
                       sx={{
                         fontSize: "1.1rem",
                         fontWeight: 300,
-                        color: "#545454",
-                        // margin: expanded ? "0rem" : "0.8rem",
+                        color: theme.palette.secondary.main,
                       }}
                     >
                       Where We Build in Denver Metro, CO
                     </Typography>
                     {expanded && (
-                      <Typography variant="caption" sx={{ color: "#545454" }}>
+                      <Typography
+                        variant="caption"
+                        sx={{ color: theme.palette.secondary.main }}
+                      >
                         Select as many as you'd like
                       </Typography>
                     )}
@@ -301,7 +486,7 @@ function Homes() {
                         )
                       }
                       sx={{
-                        color: "rgb(84,84,84)",
+                        color: theme.palette.primary.main,
                         backgroundColor: `${
                           bedRoomData === state.state
                             ? "#BED344"
@@ -347,7 +532,7 @@ function Homes() {
                 marginRight: "1rem",
                 cursor: "pointer",
                 color:
-                  tab === "neighbourHood" ? "#545454" : "#8c8c8c !important",
+                  tab === "neighbourHood" ? theme.palette.secondary.main : "#8c8c8c !important",
               }}
             >
               <StyledTabs>12 Neighbourhoods</StyledTabs>
@@ -361,10 +546,10 @@ function Homes() {
                     : "4px solid #ffffff",
                 padding: "8px 0px",
                 cursor: "pointer",
-                color: tab === "home" ? "#545454" : "#8c8c8c !important",
+                color: tab === "home" ? theme.palette.secondary.main : "#8c8c8c !important",
               }}
             >
-              <StyledTabs onClick={gotoLivingSmartPage}>
+              <StyledTabs >
                 91 Homes & Floorplans
               </StyledTabs>
             </Box>

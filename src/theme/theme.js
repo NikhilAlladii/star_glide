@@ -9,13 +9,16 @@ const theme = createTheme({
       orange: colors.orange,
     },
     primary: {
-      main: colors.blue,
+      main: "#848484",
     },
     secondary: {
-      main: colors.orange,
+      main: "#545454",
     },
-    text:{
-      main:colors.white
+    text: {
+      main: "rgb(190,211,68)",
+    },
+    border:{
+      main:"rgb(235,235,235)"
     }
   },
 });

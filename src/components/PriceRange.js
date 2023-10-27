@@ -10,6 +10,7 @@ import { styled } from "styled-components";
 import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
 import { StyledButton } from "../containers/Homes";
+import theme from "../theme/theme";
 
 const StyledMenu = styled(Menu)`
   .MuiPaper-root {
@@ -20,7 +21,7 @@ const StyledMenu = styled(Menu)`
   }
   .MuiButtonBase-root {
     padding: 6px 0px;
-    color: #545454;
+    color: ${theme.palette.secondary.main};
     font-weight: 300;
     font-size: 0.8rem;
     font-family: "new-atten", Arial, sans-serif !important;
@@ -30,8 +31,8 @@ const StyledMenu = styled(Menu)`
   }
 `;
 
-const AirbnbSlider = styled(Slider)(({ theme }) => ({
-  color: "#545454 !important",
+const AirbnbSlider = styled(Slider)(() => ({
+  color: `${theme.palette.secondary.main} !important`,
   marginLeft: "0.8rem",
   height: "1px !important",
   padding: "13px 0",
@@ -116,7 +117,6 @@ function PriceRange({ menuTitle, homes, handleSwitch, setTempHomes }) {
     setSliderValue(newSliderValue);
   };
 
-
   useEffect(() => {
     const filteredArray = homes?.filter(
       (item) => item.price >= sliderValue[0] && item.price <= sliderValue[1]
@@ -138,8 +138,8 @@ function PriceRange({ menuTitle, homes, handleSwitch, setTempHomes }) {
           <AirbnbSlider
             slots={{ thumb: AirbnbThumbComponent }}
             value={sliderValue}
-            min={1} 
-            max={1000} 
+            min={1}
+            max={1000}
             onChange={handlePriceSliderChange}
           />
         </Box>

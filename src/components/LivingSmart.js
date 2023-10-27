@@ -1,6 +1,7 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import "./LivingSmart.css";
+import theme from "../theme/theme";
 
 function LivingSmart() {
   return (
@@ -91,7 +92,7 @@ function LivingSmart() {
             Tax&
             <span style={{ color: "rgb(190, 211, 68)" }}>HOA</span>
           </Typography>
-          <Typography variant="h6" color="#545454" margin="0.5rem 0rem">
+          <Typography variant="h6" color={theme.palette.secondary.main} margin="0.5rem 0rem">
             Homeowners Association Dues $150/ mo Tax Rate 1%
           </Typography>
           <Typography variant="caption" color="rgb(132, 132, 132)">

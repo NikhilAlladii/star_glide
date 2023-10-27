@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { styled } from "styled-components";
 import "./Home.css";
+import theme from "../theme/theme";
 
 const StyledBox = styled(Box)`
   display: flex;
@@ -66,7 +67,11 @@ function Home({ home }) {
             gutterBottom
             variant="h6"
             component="div"
-            sx={{ color: "#545454", fontWeight: 500, marginBottom: "0rem" }}
+            sx={{
+              color: theme.palette.secondary.main,
+              fontWeight: 500,
+              marginBottom: "0rem",
+            }}
           >
             {name}
           </Typography>
@@ -74,7 +79,10 @@ function Home({ home }) {
             gutterBottom
             variant="caption"
             component="div"
-            sx={{ color: "#545454", borderBottom: "0.5px solid #C8C8C8" }}
+            sx={{
+              color: theme.palette.secondary.main,
+              borderBottom: "0.5px solid #C8C8C8",
+            }}
           >
             {address},CO | Priced from the high ${price}
           </Typography>

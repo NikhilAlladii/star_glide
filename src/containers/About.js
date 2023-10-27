@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import "./Footer.js";
 import "./About.css";
 import Footer from "./Footer.js";
+import theme from "../theme/theme.js";
 
 function About() {
   const tabs = [
@@ -100,7 +101,7 @@ function About() {
               />
             </Box>
           </Grid>
-          <Grid item md={6} color="#848484">
+          <Grid item md={6} color={theme.palette.primary.main}>
             <Typography variant="caption">ABOUT US</Typography>
             <Typography variant="h3">We’re in the</Typography>
             <Typography
@@ -240,7 +241,7 @@ function About() {
               variant="h6"
               className="each-tab"
               style={{
-                color: tab.title === selectedTab ? "#545454" : "#a6a1a1",
+                color: tab.title === selectedTab ? theme.palette.secondary.main : "#a6a1a1",
                 borderBottom:
                   tab.title === selectedTab
                     ? "2px solid #bed245"

@@ -10,6 +10,7 @@ import { styled } from "styled-components";
 import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
 import { StyledButton } from "../containers/Homes";
+import theme from "../theme/theme";
 
 const StyledMenu = styled(Menu)`
   .MuiPaper-root {
@@ -19,7 +20,7 @@ const StyledMenu = styled(Menu)`
     padding: 1.5rem;
   }
   .MuiButtonBase-root {
-    color: #545454;
+    color: ${theme.palette.secondary.main};
     border-radius: 0.8rem;
     border: 1px solid #c8c8c8;
     min-width: 0px;
@@ -32,8 +33,8 @@ const StyledMenu = styled(Menu)`
   }
 `;
 
-const AirbnbSlider = styled(Slider)(({ theme }) => ({
-  color: "#545454 !important",
+const AirbnbSlider = styled(Slider)(() => ({
+  color: `${theme.palette.secondary.main} !important`,
   marginLeft: "0.8rem",
   height: "1px !important",
   padding: "13px 0",
@@ -110,7 +111,6 @@ function HomeDetails({ menuTitle, setTempHomes, homes, handleSwitch }) {
     } else {
       setBathRoomData(bathRoom);
     }
-
   };
 
   const toggleBedroom = (bedRoom) => {
@@ -172,7 +172,7 @@ function HomeDetails({ menuTitle, setTempHomes, homes, handleSwitch }) {
 
   useEffect(() => {
     handleHomeDetails();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bathRoomData, bedRoomData, garageData, sliderValue[0], sliderValue[1]]);
 
   return (

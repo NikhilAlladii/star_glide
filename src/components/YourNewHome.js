@@ -3,6 +3,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import "./YourNewHome.css";
 import Footer from "../containers/Footer";
+import theme from "../theme/theme";
 
 function YourNewHome() {
   return (
@@ -15,7 +16,8 @@ function YourNewHome() {
         />
         <Box className="about-image-text">
           <Typography variant="h2" color="rgb(207, 229, 72)" fontWeight="500">
-            <span style={{ color: "#848484" }}>Your</span> New Home
+            <span style={{ color: theme.palette.primary.main }}>Your</span> New
+            Home
           </Typography>
         </Box>
       </Box>
@@ -36,7 +38,7 @@ function YourNewHome() {
               />
             </Box>
           </Grid>
-          <Grid item md={6} color="#848484">
+          <Grid item md={6} color={theme.palette.primary.main}>
             <Typography variant="caption">YOUR NEW HOME</Typography>
             <Typography variant="h3">We’ve got your back,</Typography>
             <Typography

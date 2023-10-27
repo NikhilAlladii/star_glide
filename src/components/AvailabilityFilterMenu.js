@@ -7,6 +7,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Typography } from "@mui/material";
 import { styled } from "styled-components";
 import { StyledButton } from "../containers/Homes";
+import theme from "../theme/theme";
 
 export const StyledMenu = styled(Menu)`
   .MuiPaper-root {
@@ -17,7 +18,7 @@ export const StyledMenu = styled(Menu)`
   }
   .MuiButtonBase-root {
     padding: 6px 0px;
-    color: #545454;
+    color: ${theme.palette.primary.main};
     font-weight: 300;
     font-size: 0.8rem;
     font-family: "new-atten", Arial, sans-serif !important;

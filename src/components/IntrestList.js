@@ -1,6 +1,7 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import "./IntrestList.css";
+import theme from "../theme/theme";
 
 function IntrestList() {
   return (
@@ -11,14 +12,14 @@ function IntrestList() {
             BE FIRST TO KNOW
           </Typography>
           <Typography variant="h3" color="#ffffff" padding="1.5rem 0rem">
-            Join the <span style={{ color: "#545454" }}>interest list</span>
+            Join the <span style={{ color: theme.palette.secondary.main }}>interest list</span>
           </Typography>
         </Grid>
       </Grid>
 
       <Box className="intrest-list-box">
         <Box className="intrest-list-box-left">
-          <Typography color="#545454">
+          <Typography color={theme.palette.secondary.main}>
             Join our neighborhood interest list to be among the first to receive
             neighborhood updates, available homes, pricing, upcoming events and
             more! This info will help guide you in your new home search, and

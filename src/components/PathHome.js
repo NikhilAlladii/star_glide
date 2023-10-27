@@ -1,11 +1,12 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import "./PathHome.css";
+import theme from "../theme/theme";
 
 function PathHome() {
   return (
     <Box sx={{ margin: "3.25rem 2rem" }}>
-      <Grid container color="#848484" sx={{ paddingBottom: "3rem" }}>
+      <Grid container color={theme.palette.primary.main} sx={{ paddingBottom: "3rem" }}>
         <Grid item md={5}>
           <Typography variant="caption">TAKE THE NEXT STEP</Typography>
           <Typography variant="h3">
@@ -20,7 +21,7 @@ function PathHome() {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container spacing={2} color="#848484">
+      <Grid container spacing={2} color={theme.palette.primary.main}>
         <Grid item md={4}>
           <img
             src="https://www.tripointehomes.com/wp-content/uploads/2021/01/TPH-step1-neighborhood.jpg"

@@ -16,7 +16,7 @@ const StyledMenu = styled(Menu)`
   }
   .MuiButtonBase-root {
     padding: 8px 5px;
-    color: #545454;
+    color: ;
     font-weight: 300;
     font-size: 0.8rem;
     font-family: "new-atten", Arial, sans-serif !important;
