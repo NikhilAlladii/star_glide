@@ -59,6 +59,16 @@ function MenuButton() {
     handleClose();
   };
 
+  const gottoDesignStudioPage = () => {
+    navigate("/design-studio");
+    handleClose();
+  };
+
+  const gotoBlog = () => {
+    navigate("/blog");
+    handleClose();
+  };
+
   const states = [
     {
       state: "Arizona",
@@ -338,11 +348,14 @@ function MenuButton() {
                     <Typography variant="h5">Living Smart</Typography>
                     <ChevronRightIcon />
                   </Box>
-                  <Box className="dialog-text-centered">
+                  <Box
+                    className="dialog-text-centered"
+                    onClick={gottoDesignStudioPage}
+                  >
                     <Typography variant="h5">Design Studio</Typography>
                     <ChevronRightIcon />
                   </Box>
-                  <Box className="dialog-text-centered">
+                  <Box className="dialog-text-centered" onClick={gotoBlog}>
                     <Typography variant="h5">Blog</Typography>
                     <ChevronRightIcon />
                   </Box>

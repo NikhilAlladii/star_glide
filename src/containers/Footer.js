@@ -106,7 +106,7 @@ function Footer() {
             fontWeight: "300",
             fontSize: "11px",
             lineHeight: "1rem",
-            color: "#545454",
+            color: theme.palette.secondary.main,
           }}
         >
           *The prices of our homes, included features, plans, specifications,

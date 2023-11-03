@@ -15,6 +15,8 @@ import YourNewHome from "./components/YourNewHome";
 import FinancingYourHome from "./containers/FinancingYourHome";
 import LivingSmart from "./containers/LivingSmart";
 import Error from "./containers/Error";
+import DesignStudio from "./containers/DesignStudio";
+import Blog from "./containers/Blog";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
               element={<FinancingYourHome />}
             />
             <Route path="/livingsmart" element={<LivingSmart />} />
+            <Route path="/design-studio" element={<DesignStudio />} />
+            <Route path="/blog" element={<Blog />}/>
             <Route path="*" element={<Error />} />
           </Routes>
 
