@@ -1,86 +1,105 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Card, Grid, Paper, Typography } from "@mui/material";
 import React, { useState } from "react";
+import "./FinancingYourHome.css";
+import "./DesignStudio.css";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "./Footer.js";
-import "./About.css";
 import Footer from "./Footer.js";
-import theme from "../theme/theme.js";
+import InterestRate from "../components/IntrestRate";
+import theme from "../theme/theme";
+import FAQ from "../components/FAQ.js";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
 function DesignStudio() {
   const tabs = [
     {
-      title: "Purchase Agreement",
-      link: "https://www.tripointehomes.com/wp-content/uploads/tph-homejourneyguide-768x768-1.jpg",
-      text: "When you sign your Purchase Agreement and select your structural options, if applicable, it puts the wheels in motion for your new homebuying journey. This agreement, and any applicable attachments, contains the legal information regarding the purchase of your new home, including the estimated closing date Your New Home Advisor and Community Team will continue to be a great resource even after you’ve signed your Purchase Agreement. Have questions? Ask away. Need clarification on something? No problem. That’s what we’re here for. We want to make sure you understand the process and are excited about this journey together.",
+      title: "Dedicated to you",
+      imageLink:
+        "https://www.tripointehomes.com/wp-content/uploads/tph-homejourneyguide-768x768-1.jpg",
+      text: "Tri Pointe Connect provides a team of New Home Loan Consultants that work exclusively with customers purchasing a new home from Tri Pointe Homes.",
     },
     {
-      title: "Financing",
-      link: "https://www.tripointehomes.com/wp-content/uploads/Financing-1-1.jpg",
-      text: "Working with Tri Pointe Connect®, our affiliated mortgage company, makes the financing process seamless and easy Your New Home Loan Consultant and New Home Advisor work together to make sure all of your questions are answered and your loan stays on track.",
+      title: "At your service",
+      imageLink:
+        "https://www.tripointehomes.com/wp-content/uploads/Financing-1-1.jpg",
+      text: "You’ll have access to our team of Tri Pointe Connect New Home Loan Consultants throughout the homebuilding process. We offer in-person traditional paper documentation appointments as well as secure online services designed to streamline the new home financing process. Our secure digital application and information collection process provides one of the most convenient ways for you to experience the mortgage process. We also offer financing education and loan options to help make the homebuying experience easy and efficient.",
     },
     {
-      title: "Design Studio",
-      link: "https://www.tripointehomes.com/wp-content/uploads/Design-Studio-1-scaled.jpg",
-      text: "Your brand-new home is a blank canvas waiting for you to express your personal style. At our Design Studio, we’re here to make design easy, enjoyable and inspiring for you—whether you’re an interior design enthusiast or a total beginner. Our dedicated team of professional co-creators are mindful of your time and budget, and are committed to bringing the wow factor with an impressive array of styles and options for you to play with. So, in the end, your home feels unique—and uniquely you.",
+      title: "Array of financing options",
+      imageLink:
+        "https://www.tripointehomes.com/wp-content/uploads/Design-Studio-1-scaled.jpg",
+      text: "Conventional, FHA, VA, and Jumbo loan programs are just some of the areas where we offer expertise. Fixed and Adjustable Rate Mortgages are available on most programs. And don’t forget to ask about temporary or permanent buy-down options.",
     },
     {
-      title: "Construction",
-      link: "https://www.tripointehomes.com/wp-content/uploads/Design-Studio-1-scaled.jpg",
-      text: "Your brand-new home is a blank canvas waiting for you to express your personal style. At our Design Studio, we’re here to make design easy, enjoyable and inspiring for you—whether you’re an interior design enthusiast or a total beginner. Our dedicated team of professional co-creators are mindful of your time and budget, and are committed to bringing the wow factor with an impressive array of styles and options for you to play with. So, in the end, your home feels unique—and uniquely you.",
-    },
-    {
-      title: "Final Milestones",
-      link: "https://www.tripointehomes.com/wp-content/uploads/Design-Studio-1-scaled.jpg",
-      text: "Your brand-new home is a blank canvas waiting for you to express your personal style. At our Design Studio, we’re here to make design easy, enjoyable and inspiring for you—whether you’re an interior design enthusiast or a total beginner. Our dedicated team of professional co-creators are mindful of your time and budget, and are committed to bringing the wow factor with an impressive array of styles and options for you to play with. So, in the end, your home feels unique—and uniquely you.",
-    },
-    {
-      title: "Closing",
-      link: "https://www.tripointehomes.com/wp-content/uploads/Design-Studio-1-scaled.jpg",
-      text: "Your brand-new home is a blank canvas waiting for you to express your personal style. At our Design Studio, we’re here to make design easy, enjoyable and inspiring for you—whether you’re an interior design enthusiast or a total beginner. Our dedicated team of professional co-creators are mindful of your time and budget, and are committed to bringing the wow factor with an impressive array of styles and options for you to play with. So, in the end, your home feels unique—and uniquely you.",
-    },
-    {
-      title: "Welcome Home",
-      link: "https://www.tripointehomes.com/wp-content/uploads/Design-Studio-1-scaled.jpg",
-      text: "Your brand-new home is a blank canvas waiting for you to express your personal style. At our Design Studio, we’re here to make design easy, enjoyable and inspiring for you—whether you’re an interior design enthusiast or a total beginner. Our dedicated team of professional co-creators are mindful of your time and budget, and are committed to bringing the wow factor with an impressive array of styles and options for you to play with. So, in the end, your home feels unique—and uniquely you.",
+      title: "Extended rate locks",
+      imageLink:
+        "https://www.tripointehomes.com/wp-content/uploads/Design-Studio-1-scaled.jpg",
+      text: "To eliminate fluctuations in interest rates during construction, we offer Extended Rate Lock programs. Long term locks are available for six months or longer on most loans. Long term locks with Float Down options may also be available.",
     },
   ];
 
-  const [selectedTab, setSelectedTab] = useState("Purchase Agreement");
+  const homes = [
+    {
+      title: "Apply to pre-qualify",
+      imageLink:
+        "https://www.tripointehomes.com/wp-content/uploads/2020/12/Apply-to-pre-qualify-2048x1365.jpeg",
+      text: "Submit your pre-qualification application to join the priority group for your desired community",
+    },
+    {
+      title: "Personal consultation",
+      imageLink:
+        "https://www.tripointehomes.com/wp-content/uploads/F_08B-Crop-Personal-Consultation.jpg",
+      text: "Your personal New Home Loan Consultant will reach out to you to discuss loan options and provide you with a pre-qualification letter",
+    },
+    {
+      title: "Get formal",
+      imageLink:
+        "https://www.tripointehomes.com/wp-content/uploads/2020/12/Get-Formal-2048x1366.jpg",
+      text: "Execute your new home purchase agreement with Tri Pointe Homes and complete your loan application with Tri Pointe Connect",
+    },
+    {
+      title: "Bringing it home",
+      imageLink:
+        "https://www.tripointehomes.com/wp-content/uploads/Design-Studio-1-scaled.jpg",
+      text: "Your personal New Home Loan Consultant will guide you through the process for final loan approval, loan funding and receiving keys to your new home",
+    },
+  ];
 
-  const handleTab = (tab) => {
-    setSelectedTab(tab);
-  };
+  const areas = [
+    "Phoenix Metro",
+    "Bay Area",
+    "Inland Empire",
+    "Las Vegas",
+    "Orange County-Los Angeles",
+    "Sacramento",
+    "San Diego",
+    "Inland Empire",
+    "Las Vegas",
+  ];
+
+  const areas1 = ["Phoenix Metro", "Bay Area", "Inland Empire", "Las Vegas"];
+
+  const areas2 = ["Phoenix Metro", "Bay Area", "Las Vegas"];
+
+  const [tab, setTab] = useState(tabs[0]);
+
+  console.log("tab", tabs[0].text.slice(0, 150));
 
   return (
     <Box>
-      {/* <Box className="about-image-container">
-        <img
-          src="https://www.tripointehomes.com/wp-content/uploads/2020/12/AU_06_RT.jpg"
-          alt="home"
-          className="about-image"
-        />
-        <Box className="about-image-text">
-          <Typography color="#848484" variant="caption" fontWeight="600">
-            LOVE A GOOD STORY? HERE’S OURS.
-          </Typography>
-          <Typography variant="h2" color="#848484" fontWeight="700">
-            About Us
-          </Typography>
-        </Box>
-      </Box> */}
-
-      <Box className="image-container-one">
+      <Box className="your-home-image-container-one">
         <img
           src="https://www.tripointehomes.com/wp-content/uploads/2020/12/about-us-hero-1903x610-1.jpg"
-          alt="Your Image"
-          className="clipped-image"
+          alt="Your Images"
+          className="home-clipped-image"
         />
         <Box className="about-image-text">
           <Typography color="#BFBFC0" variant="caption">
-            LOVE A GOOD STORY? HERE’S OURS.
+            HOME FINANCING. TAILORED TO YOU.
           </Typography>
-          <Typography variant="h2" color="rgb(207, 229, 72)" fontWeight="500">
-            Design Studio
+          <Typography variant="h3" color="rgb(207, 229, 72)" fontWeight="600">
+            Design
+            <span style={{ color: theme.palette.primary.main }}> Studio</span>
           </Typography>
         </Box>
       </Box>
@@ -89,342 +108,388 @@ function DesignStudio() {
         <Grid container sx={{ padding: "6rem 2rem 8rem 2rem" }}>
           <Grid item md={6} className="group-images">
             <img
-              src="https://www.tripointehomes.com/wp-content/uploads/2020/12/579x748@2x-1.jpg"
+              src="https://www.tripointehomes.com/wp-content/uploads/2020/12/YNH_02.jpg"
               alt="about-home"
               className="about-home-one"
             />
             <Box className="image-building">
               <img
-                src="https://www.tripointehomes.com/wp-content/uploads/about-us-tri-pointe-homes-life-changing.jpg"
+                src="https://www.tripointehomes.com/wp-content/uploads/2020/12/YNH_03_RT.jpg"
                 alt="home1"
                 className="about-home-two"
               />
             </Box>
           </Grid>
-          <Grid item md={6} color={theme.palette.primary.main}>
-            <Typography variant="caption">ABOUT US</Typography>
-            <Typography variant="h3">We’re in the</Typography>
+          <Grid
+            item
+            md={6}
+            color={theme.palette.primary.main}
+            className="right-container"
+          >
+            <Typography variant="body1">
+              THE FINANCING YOU NEED, ALL UNDER ONE ROOF
+            </Typography>
+            <Typography variant="h3">Financing Made</Typography>
             <Typography
               variant="h3"
               color="#cfe548"
               sx={{ marginBottom: "1.5rem" }}
             >
-              life-changing business
+              Friendly
             </Typography>
             <Typography>
-              We’re a leading new home builder, known for setting trends and
-              paving new paths forward. One of the nation’s largest
-              homebuilders, we create homes and neighborhoods that make a
-              premium lifestyle possible for our customers—whatever their price
-              point or life stage.
-            </Typography>
-            <br />
-            <Typography>
-              As local specialists on a national scale, we are customer-driven
-              and committed to environmentally responsible business practices
-              and enduring craftmanship. We don’t just focus on life inside the
-              home—we believe in building community in every sense of the word,
-              from the connected locations we select to our commitment to social
-              responsibility.
-            </Typography>
-            <br />
-            <Typography>
-              Our passion for design and innovation and our people-first
-              philosophy are recognized throughout the industry and prized by
-              our team members.
-            </Typography>
-            <br />
-            <Typography>
-              Tri Pointe Homes exists to exceed our homebuyers’ expectations and
-              truly enhance their lives
+              Buying a new construction home from Tri Pointe Homes®? Think
+              financing your new home has to be difficult? Not with Tri Pointe
+              Connect®! We are the affiliated mortgage company of Tri Pointe
+              Homes, and, as such, seamlessly integrate financing into the
+              homebuying and homebuilding process to make the whole experience
+              easier and more enjoyable for you.
             </Typography>
           </Grid>
         </Grid>
       </Box>
 
-      <Grid container>
-        <Grid item md={5} className="center-box">
-          <Typography color="rgb(132, 132, 132)" variant="h3">
-            Local specialist on a
-            <span style={{ color: "rgb(190, 211, 68)" }}>national scale</span>
-          </Typography>
-          <Typography variant="h6" margin="0.5rem 0rem">
-            Our history
-          </Typography>
-          <Typography variant="body1" color="rgb(132, 132, 132)">
-            Right from the start, Tri Pointe Homes delivered a unique
-            experience: a new kind of customer-centric, design-driven
-            homebuilding company had been born, and the homebuying public
-            clearly appreciated its arrival. Tri Pointe Homes soon became a
-            publicly traded company, and in 2014 another door opened when Tri
-            Pointe Homes acquired five other distinctive regional homebuilding
-            brands—some with nearly a century of service in their communities—to
-            form TRI Pointe Group, one of the largest public homebuilding
-            companies in the US.
-          </Typography>
-        </Grid>
-        <Grid item md={7}>
-          <img
-            src="https://www.tripointehomes.com/wp-content/uploads/2020/12/about-us-960x960-1.jpg"
-            alt="home"
-            className="image-container"
-          />
-        </Grid>
-      </Grid>
-
-      <Grid container>
-        <Grid item md={7}>
-          <img
-            src="https://www.tripointehomes.com/wp-content/uploads/about-us-tri-pointe-homes-tursted-relationships-e1649268035715.jpg"
-            alt="home"
-            className="image-container"
-          />
-        </Grid>
-        <Grid item md={5} className="center-box">
-          <Typography color="rgb(132, 132, 132)" variant="h3">
-            Trusted community
-            <span style={{ color: "rgb(190, 211, 68)" }}> relationships</span>
-          </Typography>
-          <Typography variant="h6" margin="0.5rem 0rem">
-            Welcome Home
-          </Typography>
-          <Typography variant="body1" color="rgb(132, 132, 132)">
-            Just six years later, TRI Pointe Group and its six regional
-            homebuilding brands, consisting of Tri Pointe Homes in California,
-            Colorado and the Carolinas; Maracay in Arizona; Pardee Homes in
-            California and Nevada; Quadrant Homes in Washington; Trendmaker
-            Homes in Texas; and Winchester Homes in Maryland and Northern
-            Virginia had delighted more than 28,000 homeowners, establishing 330
-            beautiful neighborhoods and 15 incredible masterplan communities,
-            and winning over 270 separate awards, while supporting more than 150
-            community causes.
-          </Typography>
-        </Grid>
-      </Grid>
-
-      <Grid container>
-        <Grid item md={5} className="center-box">
-          <Typography color="rgb(132, 132, 132)" variant="h3">
-            Big thinking with a
-            <span style={{ color: "rgb(190, 211, 68)" }}>
-              personal approach
-            </span>
-          </Typography>
-          <Typography variant="h6" margin="0.5rem 0rem">
-            The best of big and small
-          </Typography>
-          <Typography variant="body1" color="rgb(132, 132, 132)">
-            Right from the start, Tri Pointe Homes delivered a unique
-            experience: a new kind of customer-centric, design-driven
-            homebuilding company had been born, and the homebuying public
-            clearly appreciated its arrival. Tri Pointe Homes soon became a
-            publicly traded company, and in 2014 another door opened when Tri
-            Pointe Homes acquired five other distinctive regional homebuilding
-            brands—some with nearly a century of service in their communities—to
-            form TRI Pointe Group, one of the largest public homebuilding
-            companies in the US.
-          </Typography>
-        </Grid>
-        <Grid item md={7}>
-          <img
-            src="https://www.tripointehomes.com/wp-content/uploads/2020/12/AU_06_RT.jpg"
-            alt="home"
-            className="image-container"
-          />
-        </Grid>
-      </Grid>
-
-      <Box className="tabs-container">
-        {tabs.map((tab) => (
-          <Box sx={{ padding: "1rem 0rem" }}>
-            <Typography
-              variant="h6"
-              className="each-tab"
-              style={{
-                color:
-                  tab.title === selectedTab
-                    ? theme.palette.secondary.main
-                    : "#a6a1a1",
-                borderBottom:
-                  tab.title === selectedTab
-                    ? "2px solid #bed245"
-                    : "2px solid #a6a1a1",
-              }}
-              onClick={() => handleTab(tab.title)}
-            >
-              {tab.title}
+      <Box>
+        <Grid container color="rgb(132, 132, 132)">
+          <Grid item md={6} className="center-box-one">
+            <Typography variant="body1" color="#bfbfc0">
+              BENEFITS OF TRI POINTE CONNECT
             </Typography>
-          </Box>
-        ))}
+            <Typography
+              color="rgb(132, 132, 132)"
+              variant="h3"
+              padding="1rem 0rem 3rem 0rem"
+            >
+              Financing
+              <br />
+              <span style={{ color: "#cfe548" }}> tailored to you</span>
+            </Typography>
+
+            {tabs.map((eachTab, i) => (
+              <Box
+                key={i}
+                className="each-tab-styling"
+                onClick={() => setTab(eachTab)}
+                color={
+                  eachTab.title === tab.title
+                    ? theme.palette.secondary.main
+                    : "#d2d0d0"
+                }
+              >
+                <Typography
+                  color={
+                    eachTab.title === tab.title
+                      ? theme.palette.secondary.main
+                      : "#d2d0d0"
+                  }
+                  variant="h6"
+                  marginBottom="1rem"
+                >
+                  {eachTab.title}
+                </Typography>
+                <Box
+                  className="tab-text"
+                  color={
+                    eachTab.title === tab.title
+                      ? theme.palette.secondary.main
+                      : "#d2d0d0"
+                  }
+                >
+                  <Typography>
+                    {tab.text === eachTab.text
+                      ? eachTab.text
+                      : eachTab.text.slice(0, 80) + "......"}
+                  </Typography>
+                  <Box className="arrow-box">
+                    <ArrowForwardIcon fontSize="small" />
+                  </Box>
+                </Box>
+              </Box>
+            ))}
+          </Grid>
+          <Grid item md={6} sx={{ heigh: "auto" }}>
+            <img
+              src={tab?.imageLink ? tab?.imageLink : tabs[0]?.imageLink}
+              alt="home"
+              className="image-container-new-home"
+            />
+          </Grid>
+        </Grid>
       </Box>
 
-      {tabs.map((tab) => (
-        <Box className="cards-container">
-          {tab.title === selectedTab && (
-            <Box sx={{ padding: "2rem 0rem 2rem 3rem", width: "50%" }}>
-              <img src={tab.link} alt="home" className="about-image" />
-            </Box>
-          )}
-          {tab.title === selectedTab && (
-            <Box sx={{ padding: "2rem 3rem 2rem 0rem", width: "50%" }}>
-              <Typography variant="body1" className="tab-text">
-                {tab.text}
+      <Box padding="4rem 3.25rem" margin="4rem 0rem">
+        <Box>
+          <Grid container color="#bfbfc0" paddingBottom="3rem">
+            <Grid item md={5}>
+              <Typography variant="body1">
+                FINANCING IN FOUR EASY STEPS
               </Typography>
-              <a
-                href="https://www.tripointehomes.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Learn more
-              </a>
-            </Box>
-          )}
+              <Typography variant="h3" color={theme.palette.primary.main}>
+                The path{" "}
+                <span style={{ color: "rgb(207, 229, 72)" }}>home</span>
+              </Typography>
+            </Grid>
+            <Grid item md={7} color={theme.palette.primary.main}>
+              <Typography>
+                Because Tri Pointe Connect is the affiliated mortgage company of
+                Tri Pointe Homes, we offer the benefit of an easy-to-understand,
+                4-step process that’s seamlessly integrated with the
+                construction and delivery of your new home.
+              </Typography>
+            </Grid>
+          </Grid>
         </Box>
-      ))}
+        <Box>
+          <Grid container spacing={4}>
+            {homes.map((home, i) => (
+              <Grid item key={i} md={3}>
+                <img
+                  src={home.imageLink}
+                  alt={home.title}
+                  className="financing-grid-images"
+                />
+                <Typography variant="h6" color="balck" marginBottom="0.5rem">
+                  {i + 1}. {home.title}
+                </Typography>
+                <Typography color={theme.palette.primary.main}>
+                  {home.text}
+                </Typography>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      </Box>
 
-      <Grid container sx={{ marginTop: "4rem" }}>
-        <Grid item md={7}>
-          <img
-            src="https://www.tripointehomes.com/wp-content/uploads/tri-pointe-homes-leading-edge-design-video-cover.jpg"
-            alt="home"
-            className="image-container"
-          />
-        </Grid>
-        <Grid item md={5} className="center-box">
-          <Typography color="rgb(132, 132, 132)" variant="h3">
-            Life-Changing <span style={{ color: "#cfe548" }}>Design</span>
-          </Typography>
-          <Typography variant="h6" margin="0.5rem 0rem">
-            Experience
-          </Typography>
-
-          <Typography variant="body1" color="rgb(132, 132, 132)" marginTop={2}>
-            At Tri Pointe Homes, we believe people and places should grow
-            together. Our passion for innovation is based on an unwavering
-            commitment to leading-edge design to help homebuyers create not only
-            a better living environment but also maintain an active lifestyle in
-            the vibrant communities we build. We invite you to discover our
-            innovative, design-forward homes.
-          </Typography>
-          <Typography variant="body2" className="learn-more-button">
-            FIND YOUR HOME
-          </Typography>
-        </Grid>
-      </Grid>
-
-      <Grid container>
-        <Grid item md={5} className="center-box">
-          <Typography color="rgb(132, 132, 132)" variant="h3">
-            Join the
-            <span style={{ color: "#cfe548" }}>Tri Pointe team</span>
-          </Typography>
-          <Typography variant="h6" margin="0.5rem 0rem">
-            LOVE WHAT YOU DO
-          </Typography>
-
-          <Typography variant="body1" color="rgb(132, 132, 132)" marginTop={2}>
-            Our team members may come from different parts of the country and
-            specialize in different areas of the industry, but we all share a
-            passion for having a voice in shaping our company and for helping
-            our home buyers achieve their dreams. Together we create a culture
-            that achieves outstanding results by openly exchanging information,
-            celebrating success and innovation and actively working to be a
-            force for good in every community we touch. We’re always on the
-            lookout for remarkable individuals that have the power to change the
-            course of events. You’ll help advance our shared vision of
-            homebuying, homebuilding and home ownership to the next level with
-            integrity, drive and teamwork.
-          </Typography>
-          <Typography variant="body2" className="learn-more-button">
-            FIND YOUR HOME
-          </Typography>
-        </Grid>
-        <Grid item md={7}>
-          <img
-            src="https://www.tripointehomes.com/wp-content/uploads/about-us-tri-pointe-homes-team.jpg"
-            alt="home"
-            className="image-container"
-          />
-        </Grid>
-      </Grid>
-
-      <Grid container>
-        <Grid item md={7}>
-          <img
-            src="https://www.tripointehomes.com/wp-content/uploads/7096f356-eb7a-4569-9581-124b961df147_with-white-boarder.jpg"
-            alt="home"
-            className="image-container"
-          />
-        </Grid>
-        <Grid item md={5} className="center-box">
-          <Typography color="rgb(132, 132, 132)" variant="h3">
-            Great Place to Work®
-          </Typography>
-
-          <Typography variant="body1" color="rgb(132, 132, 132)" marginTop={2}>
-            Tri Pointe Homes®️ was recognized as a{" "}
-            <span style={{ color: "#cfe548" }}>
-              Great Place to Work-Certified™️
-            </span>{" "}
-            company for 2021-2024.
-          </Typography>
-
-          <Typography variant="body1" color="rgb(132, 132, 132)" marginTop={2}>
-            Tri Pointe Homes earned{" "}
-            <span style={{ color: "#cfe548" }}>
-              100 Best Companies to Work For®
-            </span>{" "}
-            recognition from Fortune Magazine and Great Place to Work® 2023.
-          </Typography>
-        </Grid>
-      </Grid>
-
-      <Grid container>
-        <Grid item md={7}>
-          <img
-            src="https://www.tripointehomes.com/wp-content/uploads/IMG_2424.jpg"
-            alt="home"
-            className="image-container"
-          />
-        </Grid>
-        <Grid item md={5} className="center-box">
-          <Typography color="rgb(132, 132, 132)" variant="h3">
-            Builder of the year
-          </Typography>
-
-          <Typography variant="body1" color="rgb(132, 132, 132)" marginTop={2}>
-            Awarded by Builder and Developer Magazine 2019 and Builder magazine
-            2015
+      <Box bgcolor=" rgb(190, 211, 68)" padding="5.5rem 3.25rem">
+        <Box>
+          <Typography variant="caption" color="#FFFFFF">
+            FURNISH AND FINISH
           </Typography>
           <Typography
-            sx={{
-              color: "#bed245",
-              margin: "1rem 0rem",
-            }}
+            variant="h3"
+            fontWeight="500"
+            color="#FFFFFF"
+            padding="1.5rem 0rem"
           >
-            Where We Build
+            Shop our
+            <span style={{ color: theme.palette.secondary.main }}>
+              {" "}
+              model homes
+            </span>
           </Typography>
-        </Grid>
-      </Grid>
+        </Box>
+        <Box display="flex" justifyContent="space-between">
+          <Box width="60%">
+            <Typography color={theme.palette.secondary.main} variant="caption">
+              If you are serious about purchasing a new home from Tri Pointe
+              Homes, and we think you are, getting pre-qualified and joining the
+              priority group for your desired community will put you one step
+              closer to homeownership attainable for your own space. Purchase a
+              few pieces from the designer-curated collections or work with a
+              complimentary interior designer to select furniture, art, and
+              accessories that reflect your personal style.
+            </Typography>
+          </Box>
+          <Box>
+            <Box>
+              <Typography
+                bgcolor="#fff"
+                padding="15px 55px 12px"
+                fontSize="14px"
+                borderRadius="4px"
+              >
+                LEARN MORE
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
 
-      <Grid container>
-        <Grid item md={7}>
+      <Grid
+        container
+        className="form-container"
+        padding="8rem 0rem 0rem 0rem"
+        bgcolor="#FAFAFA"
+      >
+        <Grid item md={6} className="center-box-financing">
+          <Typography color="#bfbfc0">PAYMENT CALCULATOR</Typography>
+          <Typography
+            color="rgb(132, 132, 132)"
+            variant="h3"
+            marginBottom="3rem"
+          >
+            Estimate your
+            <br />
+            <span style={{ color: "rgb(190, 211, 68)" }}>monthly payment</span>
+          </Typography>
+          <Typography variant="h6" margin="0.5rem 0rem 1.5rem 0.5rem">
+            Your monthly payment would be** $0
+          </Typography>
+          <Box sx={{ paddingRight: "20%" }}>
+            <Typography
+              variant="body1"
+              color="rgb(132, 132, 132)"
+              paddingBottom="5rem !important"
+            >
+              To put the price of your new home—and all the features you’ve
+              chosen—in perspective, it’s helpful to have a sense of what you’ll
+              owe each month. Use this interactive calculator to get a quick
+              estimate of your monthly payment, so you can see how that amount
+              fits your budget and your lifestyle.
+            </Typography>
+            <Typography variant="caption">
+              **This mortgage calculator is for illustrative purposes only and
+              is not a guarantee. The monthly payment illustration on this tool
+              does not include amounts for property taxes, insurance premiums,
+              homeowner’s association dues, or other factors that potentially
+              could affect your monthly payment. Therefore, your actual monthly
+              payment will be higher. Interest rates change frequently and
+              without notice. Financing availability and terms will depend on
+              your situation. Assumes you are purchasing a single family home
+              and primary residence. Rate is fixed. Debt-to-income ratio is less
+              than 41% and excellent credit. These assumptions are subject to
+              change without notice.
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid item md={6}>
           <img
-            src="https://www.tripointehomes.com/wp-content/uploads/2021/01/aboutus_100_650x650.jpg"
+            src="https://www.tripointehomes.com/wp-content/uploads/calculator-estimate-payments.jpg"
             alt="home"
-            className="image-container"
+            className="image-container-financing"
           />
         </Grid>
-        <Grid item md={5} className="center-box">
-          <Typography color="rgb(132, 132, 132)" variant="h3">
-            100 Fastest-growing company
-          </Typography>
 
-          <Typography variant="body1" color="rgb(132, 132, 132)" marginTop={2}>
-            Awarded by Fortune Magazine 2017
-          </Typography>
-        </Grid>
+        <Box className="inside-form">
+          <Paper sx={{ boxShadow: "none" }}>
+            <InterestRate />
+          </Paper>
+        </Box>
       </Grid>
+
+      <Box className="contact-homes">
+        <Box className="inside-contact-homes">
+          <Box display="flex" flexDirection="column" alignItems="center">
+            <Typography variant="h4" paddingBottom="1rem">
+              Contact Tri Pointe Homes
+            </Typography>
+            <Typography variant="body2">
+              If you’re interested in visiting our design studio, please contact
+              the the design studio in your
+              <br />
+              <span
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {" "}
+                region.
+              </span>
+            </Typography>
+          </Box>
+
+          <Box width="80%" display="flex" margin="auto" alignItems="center">
+            <Grid container spacing={4} margin="2% 0%">
+              <Grid item md={4}>
+                <Card
+                  sx={{
+                    width: "100%",
+                    padding: "10px 30px",
+                    minHeight: "72vh",
+                  }}
+                >
+                  <Typography variant="h5" padding="3% 0%" color="#bed245">
+                    West Coast
+                  </Typography>
+                  <Box marginBottom="1rem">
+                    {areas.map((area, i) => (
+                      <Box
+                        key={i}
+                        display="flex"
+                        justifyContent="space-between"
+                        padding="3% 0%"
+                        borderBottom={
+                          areas.length === i + 1 ? "none" : "1px solid #e0e0e0"
+                        }
+                        sx={{ cursor: "pointer" }}
+                      >
+                        <Typography variant="caption">{area}</Typography>
+                        <ArrowRightAltIcon fontSize="small" />
+                      </Box>
+                    ))}
+                  </Box>
+                </Card>
+              </Grid>
+
+              <Grid item md={4}>
+                <Card
+                  sx={{
+                    width: "100%",
+                    padding: "10px 30px",
+                    minHeight: "72vh",
+                  }}
+                >
+                  <Typography variant="h5" padding="3% 0%" color="#bed245">
+                    Central
+                  </Typography>
+                  <Box marginBottom="1rem">
+                    {areas1.map((area, i) => (
+                      <Box
+                        key={i}
+                        display="flex"
+                        justifyContent="space-between"
+                        padding="3% 0%"
+                        borderBottom={
+                          areas1.length === i + 1 ? "none" : "1px solid #e0e0e0"
+                        }
+                        sx={{ cursor: "pointer" }}
+                      >
+                        <Typography variant="caption">{area}</Typography>
+                        <ArrowRightAltIcon fontSize="small" />
+                      </Box>
+                    ))}
+                  </Box>
+                </Card>
+              </Grid>
+
+              <Grid item md={4}>
+                <Card
+                  sx={{
+                    width: "100%",
+                    padding: "10px 30px",
+                    minHeight: "72vh",
+                  }}
+                >
+                  <Typography variant="h5" padding="3% 0%" color="#bed245">
+                    East Coast
+                  </Typography>
+                  <Box marginBottom="1rem">
+                    {areas2.map((area, i) => (
+                      <Box
+                        key={i}
+                        display="flex"
+                        justifyContent="space-between"
+                        padding="3% 0%"
+                        borderBottom={
+                          areas2.length === i + 1 ? "none" : "1px solid #e0e0e0"
+                        }
+                        sx={{ cursor: "pointer" }}
+                      >
+                        <Typography variant="caption">{area}</Typography>
+                        <ArrowRightAltIcon fontSize="small" />
+                      </Box>
+                    ))}
+                  </Box>
+                </Card>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Box>
+
+      <FAQ />
 
       <Footer />
     </Box>

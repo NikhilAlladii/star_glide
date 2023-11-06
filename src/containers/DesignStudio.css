@@ -1,0 +1,17 @@
+.contact-homes {
+  background-image: url("https://www.tripointehomes.com/wp-content/uploads/200601_TriPointeDesignStudio0065_KH.jpg");
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  align-items: center;
+  z-index: 0;
+  color: #fff;
+}
+
+.inside-contact-homes {
+  min-height: 100vh;
+  width: 100%;
+  background-color: rgba(43, 41, 37, 0.6156862745);
+  padding: 5% 0%;
+}
