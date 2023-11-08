@@ -4,8 +4,11 @@ import "./Blog.css";
 import theme from "../theme/theme";
 import Footer from "./Footer.js";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import { useNavigate } from "react-router-dom";
 
 function Blog() {
+  const navigate = useNavigate();
+
   const pages = [
     "Design & Style",
     "Homebuying 101",
@@ -91,6 +94,14 @@ function Blog() {
     },
   ];
 
+  const gotoBlogCategoryPage = (page) => {
+    console.log("page", page);
+    const encodedCategory = encodeURIComponent(page);
+
+    console.log("page", encodedCategory);
+    navigate(`/blog/category/${encodedCategory}`);
+  };
+
   return (
     <Box>
       <Box display="flex" alignItems="center" bgcolor="#f7f7f7" height="100vh">
@@ -131,7 +142,12 @@ function Blog() {
       >
         {pages.map((page, i) => (
           <Box key={i} padding="1%">
-            <Typography variant="body2">{page}</Typography>
+            <Typography
+              variant="body2"
+              onClick={() => gotoBlogCategoryPage(page)}
+            >
+              {page}
+            </Typography>
           </Box>
         ))}
       </Box>

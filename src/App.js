@@ -17,6 +17,7 @@ import LivingSmart from "./containers/LivingSmart";
 import Error from "./containers/Error";
 import DesignStudio from "./containers/DesignStudio";
 import Blog from "./containers/Blog";
+import MainPage from "./containers/MainPage";
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
         <CssBaseline />
         <Router>
           <Routes>
-            <Route path="/" element={<Homes />} />
+            <Route path="/" element={<MainPage />} />
+            <Route path="/find-your-home" element={<Homes />} />
             <Route path="/home/:id" element={<IndividualHomeDetails />} />
             <Route path="/about" element={<About />} />
             <Route path="/your-new-home" element={<YourNewHome />} />
@@ -36,6 +38,7 @@ function App() {
             <Route path="/livingsmart" element={<LivingSmart />} />
             <Route path="/design-studio" element={<DesignStudio />} />
             <Route path="/blog" element={<Blog />}/>
+            <Route path="/blog/category/:page" element={<Blog />} />
             <Route path="*" element={<Error />} />
           </Routes>
 

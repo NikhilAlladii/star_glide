@@ -34,8 +34,12 @@ function MenuButton() {
     setOpen(false);
   };
 
-  const gotoFinancePage = () => {
+  const goToHomePage = () => {
     navigate("/");
+  };
+
+  const gotoFinancePage = () => {
+    navigate("/find-your-home");
     handleClose();
   };
 
@@ -205,7 +209,7 @@ function MenuButton() {
     <Box sx={{ position: "relative" }}>
       <Box className="header-parent">
         <Box className="header-menu">
-          <img src={imageLink} alt="company" />
+          <img src={imageLink} alt="company" onClick={goToHomePage} />
           <MenuIcon
             fontSize="large"
             sx={{ marginLeft: "1rem" }}
