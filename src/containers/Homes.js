@@ -15,6 +15,8 @@ import {
 import Home from "./Home";
 import { styled } from "styled-components";
 import AvailabilityFilterMenu from "../components/AvailabilityFilterMenu";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ClearIcon from "@mui/icons-material/Clear";
 import PriceRange from "../components/PriceRange";
 import MoreFilters from "../components/MoreFilters";
 import SortByFilters from "../components/SortByFilters";
@@ -77,9 +79,180 @@ const StyledTabs = styled(Box)`
   font-weight: 500 !important;
 `;
 
+const StyledClearAllButton = styled(Button)`
+  border-radius: 1rem !important;
+  padding: 0px 5px !important;
+  font-size: 12px !important;
+  text-transform: capitalize !important;
+  .MuiButton-startIcon {
+    margin-right: 4px;
+  }
+  .muisvgicon-fontsizesmall : {
+    width: 0.5rem;
+  }
+`;
+
 function Homes() {
   const dispatch = useDispatch();
   const newHomes = useSelector((state) => state.homes);
+
+  const [availabilityFilterMenu, setAvailabilityFilterMenu] = useState([
+    {
+      label: "Move In Ready",
+      id: "moveInReady",
+      checked: false,
+      value: "moveInReady",
+    },
+    {
+      label: "Ready To Build",
+      id: "readyToBuild",
+      checked: false,
+      value: "readyToBuild",
+    },
+  ]);
+
+  const [tourOptionsFilterMenu, setTourOptionsFilterMenu] = useState([
+    {
+      label: "Virtual Tour / Visualizer Available",
+      id: "virtualOptions",
+      checked: false,
+      value: "virtualOptions",
+    },
+  ]);
+  const [dummyTourOptionsFilterMenu, setDummyTourOptionsFilterMenu] = useState([
+    {
+      label: "Virtual Tour / Visualizer Available",
+      id: "virtualOptions",
+      checked: false,
+      value: "virtualOptions",
+    },
+  ]);
+
+  const [neighbourHoodFilterMenu, setNeighbourHoodFilterMenu] = useState([
+    {
+      label: "Located Within a Planned Community",
+      id: "plannedCommunity",
+      checked: false,
+      value: "plannedCommunity",
+    },
+    {
+      label: "Single Story Homes",
+      id: "singleStoryHomes",
+      checked: false,
+      value: "singleStoryHomes",
+    },
+    {
+      label: "Townhomes & Condos",
+      id: "townHomes",
+      checked: false,
+      value: "townHomes",
+    },
+  ]);
+  const [dummyNeighbourHoodFilterMenu, setDummyNeighbourHoodFilterMenu] =
+    useState([
+      {
+        label: "Located Within a Planned Community",
+        id: "plannedCommunity",
+        checked: false,
+        value: "plannedCommunity",
+      },
+      {
+        label: "Single Story Homes",
+        id: "singleStoryHomes",
+        checked: false,
+        value: "singleStoryHomes",
+      },
+      {
+        label: "Townhomes & Condos",
+        id: "townHomes",
+        checked: false,
+        value: "townHomes",
+      },
+    ]);
+
+  const [amentiesFilterMenu, setAmentiesFilterMenu] = useState([
+    {
+      label: "Community Center / Clubhouse",
+      id: "communityCenter",
+      checked: false,
+      value: "communityCenter",
+    },
+    {
+      label: "Community Pool",
+      id: "communityPool",
+      checked: false,
+      value: "communityPool",
+    },
+    {
+      label: "Lakes & Ponds",
+      id: "lakes",
+      checked: false,
+      value: "lakes",
+    },
+    {
+      label: "Parks & Nature Areas",
+      id: "parks",
+      checked: false,
+      value: "parks",
+    },
+    {
+      label: "Sport Facilities",
+      id: "sportsFacility",
+      checked: false,
+      value: "sportsFacility",
+    },
+  ]);
+  const [dummyAmentiesFilterMenu, setDummyAmentiesFilterMenu] = useState([
+    {
+      label: "Community Center / Clubhouse",
+      id: "communityCenter",
+      checked: false,
+      value: "communityCenter",
+    },
+    {
+      label: "Community Pool",
+      id: "communityPool",
+      checked: false,
+      value: "communityPool",
+    },
+    {
+      label: "Lakes & Ponds",
+      id: "lakes",
+      checked: false,
+      value: "lakes",
+    },
+    {
+      label: "Parks & Nature Areas",
+      id: "parks",
+      checked: false,
+      value: "parks",
+    },
+    {
+      label: "Sport Facilities",
+      id: "sportsFacility",
+      checked: false,
+      value: "sportsFacility",
+    },
+  ]);
+
+  const [sliderValue, setSliderValue] = useState([0, 1000]);
+  const [dummySliderValue, setDummySliderValue] = useState([0, 1000]);
+
+  const [bathRoomData, setBathRoomData] = useState("");
+  const [dummyBathRoomData, dummySetBathRoomData] = useState("");
+
+  const [homeDetailsBedRoomData, setHomeDetailsBedRoomData] = useState("");
+  const [dummyHomeDetailsBedRoomData, dummySetHomeDetailsBedRoomData] =
+    useState("");
+
+  const [garageData, setGarageData] = useState("");
+  const [dummyGarageData, dummySetGarageData] = useState("");
+
+  const [homeDetailsSliderValue, setHomeDetailsSliderValue] = useState([
+    0, 2000,
+  ]);
+  const [dummyHomeDetailsSliderValue, dummySetHomeDetailsSliderValue] =
+    useState([0, 2000]);
 
   const [homes, setHomes] = useState(newHomes);
   const [tempHomes, setTempHomes] = useState(newHomes);
@@ -167,8 +340,6 @@ function Homes() {
   const handleAccordionChange = () => {
     setExpanded(!expanded);
   };
-
-
 
   const handleSelecetdState = (state) => {
     setSelecetedState(state.coordinates);
@@ -307,6 +478,48 @@ function Homes() {
       ],
     },
   ];
+
+  const [handleAvailabilityTickIcon, setAvailabilityTickHandleIcon] =
+    useState();
+
+  const [handleMoreFiltersTickIcon, setMoreFiltersTickHandleIcon] = useState();
+  const [handlePricerangeTickIcon, setPricerangeTickIcon] = useState();
+  const [handleHomeDetailsTickIcon, sethandleHomeDetailsTickIcon] = useState();
+
+  const clearAvailabilityFilterMenu = () => {
+    setTempHomes(handleSwitch("featured", newHomes));
+    const newArr = availabilityFilterMenu.map((menu) => {
+      return { ...menu, checked: false };
+    });
+    setAvailabilityFilterMenu(newArr);
+  };
+
+  const clearPriceRangeFilterMenu = () => {
+    setSliderValue(dummySliderValue);
+  };
+
+  const clearHomeDetailsFilterMenu = () => {
+    setBathRoomData(dummyBathRoomData);
+    setHomeDetailsBedRoomData(dummyHomeDetailsBedRoomData);
+    setGarageData(dummyGarageData);
+    setHomeDetailsSliderValue(dummyHomeDetailsSliderValue);
+  };
+
+  const clearMoreDetailsFilterMenu = () => {
+    setTourOptionsFilterMenu(dummyTourOptionsFilterMenu);
+    setNeighbourHoodFilterMenu(dummyNeighbourHoodFilterMenu);
+    setAmentiesFilterMenu(dummyAmentiesFilterMenu);
+    setTempHomes(handleSwitch("featured", newHomes));
+  };
+
+  const removeAllFilters = () => {
+    clearAvailabilityFilterMenu();
+    clearHomeDetailsFilterMenu();
+    clearPriceRangeFilterMenu();
+    clearMoreDetailsFilterMenu();
+  };
+
+  console.log("icon->", tempHomes);
 
   return (
     <Box className="container">
@@ -532,10 +745,12 @@ function Homes() {
                 marginRight: "1rem",
                 cursor: "pointer",
                 color:
-                  tab === "neighbourHood" ? theme.palette.secondary.main : "#8c8c8c !important",
+                  tab === "neighbourHood"
+                    ? theme.palette.secondary.main
+                    : "#8c8c8c !important",
               }}
             >
-              <StyledTabs>12 Neighbourhoods</StyledTabs>
+              <StyledTabs>12 Neighborhoods</StyledTabs>
             </Box>
             <Box
               onClick={handleHomeTab}
@@ -546,13 +761,31 @@ function Homes() {
                     : "4px solid #ffffff",
                 padding: "8px 0px",
                 cursor: "pointer",
-                color: tab === "home" ? theme.palette.secondary.main : "#8c8c8c !important",
+                color:
+                  tab === "home"
+                    ? theme.palette.secondary.main
+                    : "#8c8c8c !important",
               }}
             >
-              <StyledTabs >
-                91 Homes & Floorplans
-              </StyledTabs>
+              <StyledTabs>91 Homes & Floorplans</StyledTabs>
             </Box>
+          </Box>
+
+          <Box margin="1rem">
+            {(handleAvailabilityTickIcon ||
+              handleMoreFiltersTickIcon ||
+              handlePricerangeTickIcon ||
+              handleHomeDetailsTickIcon) && (
+              <StyledClearAllButton
+                onClick={() => {
+                  removeAllFilters();
+                }}
+                variant="outlined"
+                startIcon={<ClearIcon fontSize="small" />}
+              >
+                Clear All Filters
+              </StyledClearAllButton>
+            )}
           </Box>
 
           <StyledFilterMenu sx={{ margin: "1rem" }}>
@@ -562,12 +795,26 @@ function Homes() {
                 homes={homes}
                 setTempHomes={setTempHomes}
                 handleSwitch={handleSwitch}
+                availabilityFilterMenu={availabilityFilterMenu}
+                setAvailabilityFilterMenu={setAvailabilityFilterMenu}
+                handleAvailabilityTickIcon={handleAvailabilityTickIcon}
+                setAvailabilityTickHandleIcon={setAvailabilityTickHandleIcon}
               />
               <HomeDetails
                 menuTitle="Home Detials"
                 homes={homes}
                 setTempHomes={setTempHomes}
                 handleSwitch={handleSwitch}
+                handleHomeDetailsTickIcon={handleHomeDetailsTickIcon}
+                sethandleHomeDetailsTickIcon={sethandleHomeDetailsTickIcon}
+                bathRoomData={bathRoomData}
+                setBathRoomData={setBathRoomData}
+                homeDetailsBedRoomData={homeDetailsBedRoomData}
+                setHomeDetailsBedRoomData={setHomeDetailsBedRoomData}
+                garageData={garageData}
+                setGarageData={setGarageData}
+                homeDetailsSliderValue={homeDetailsSliderValue}
+                setHomeDetailsSliderValue={setHomeDetailsSliderValue}
               />
               <PriceRange
                 menuTitle="Price Range"
@@ -575,12 +822,24 @@ function Homes() {
                 setHomes={setHomes}
                 handleSwitch={handleSwitch}
                 setTempHomes={setTempHomes}
+                handlePricerangeTickIcon={handlePricerangeTickIcon}
+                setPricerangeTickIcon={setPricerangeTickIcon}
+                sliderValue={sliderValue}
+                setSliderValue={setSliderValue}
               />
               <MoreFilters
                 menuTitle="More"
                 homes={homes}
                 setTempHomes={setTempHomes}
                 handleSwitch={handleSwitch}
+                tourOptionsFilterMenu={tourOptionsFilterMenu}
+                setTourOptionsFilterMenu={setTourOptionsFilterMenu}
+                neighbourHoodFilterMenu={neighbourHoodFilterMenu}
+                setNeighbourHoodFilterMenu={setNeighbourHoodFilterMenu}
+                amentiesFilterMenu={amentiesFilterMenu}
+                setAmentiesFilterMenu={setAmentiesFilterMenu}
+                handleMoreFiltersTickIcon={handleMoreFiltersTickIcon}
+                setMoreFiltersTickHandleIcon={setMoreFiltersTickHandleIcon}
               />
             </Box>
             <Box>

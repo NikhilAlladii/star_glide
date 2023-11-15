@@ -5,12 +5,23 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Typography } from "@mui/material";
+import { InputAdornment, Typography } from "@mui/material";
 import { styled } from "styled-components";
 import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
 import { StyledButton } from "../containers/Homes";
 import theme from "../theme/theme";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+
+const StyledCircleIcon = styled(CheckCircleOutlineIcon)`
+  margin-left: 0.5rem;
+  background-color: rgb(235 245 194);
+  opacity: 0.7;
+  width: 1rem !important;
+  height: 1rem !important;
+  padding: 0.1rem !important;
+  border-radius: 50%;
+`;
 
 const StyledMenu = styled(Menu)`
   .MuiPaper-root {
@@ -60,12 +71,26 @@ const AirbnbSlider = styled(Slider)(() => ({
 }));
 
 const RedditTextField = styled((props) => (
-  <TextField InputProps={{ disableUnderline: true }} {...props} />
+  <TextField
+    InputProps={{
+      disableUnderline: true,
+      endAdornment: (
+        <InputAdornment sx={{ fontSize: "20px" }} position="end">
+          sq. ft.
+        </InputAdornment>
+      ),
+    }}
+    {...props}
+  />
 ))(({ theme }) => ({
   width: "150px",
   "& .MuiFilledInput-root": {
     overflow: "hidden",
     border: "1px solid",
+  },
+  "& .MuiTypography-body1": {
+    fontSize: "10px",
+    paddingTop: "1rem",
   },
 }));
 
@@ -85,12 +110,29 @@ AirbnbThumbComponent.propTypes = {
   children: PropTypes.node,
 };
 
-function HomeDetails({ menuTitle, setTempHomes, homes, handleSwitch }) {
+function HomeDetails({
+  menuTitle,
+  setTempHomes,
+  homes,
+  handleSwitch,
+  handleHomeDetailsTickIcon,
+  sethandleHomeDetailsTickIcon,
+  bathRoomData,
+  setBathRoomData,
+  homeDetailsBedRoomData,
+  setHomeDetailsBedRoomData,
+  garageData,
+  setGarageData,
+  homeDetailsSliderValue,
+  setHomeDetailsSliderValue,
+}) {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [bathRoomData, setBathRoomData] = useState("");
-  const [bedRoomData, setBedRoomData] = useState("");
-  const [garageData, setGarageData] = useState("");
-  const [sliderValue, setSliderValue] = useState([0, 2000]);
+  // const [bathRoomData, setBathRoomData] = useState("");
+  // const [homeDetailsBedRoomData, setHomeDetailsBedRoomData] = useState("");
+  // const [garageData, setGarageData] = useState("");
+  // const [homeDetailsSliderValue, setHomeDetailsSliderValue] = useState([
+  //   0, 2000,
+  // ]);
 
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -114,11 +156,11 @@ function HomeDetails({ menuTitle, setTempHomes, homes, handleSwitch }) {
   };
 
   const toggleBedroom = (bedRoom) => {
-    setBedRoomData(bedRoom);
-    if (bedRoom === bedRoomData) {
-      setBedRoomData("");
+    setHomeDetailsBedRoomData(bedRoom);
+    if (bedRoom === homeDetailsBedRoomData) {
+      setHomeDetailsBedRoomData("");
     } else {
-      setBedRoomData(bedRoom);
+      setHomeDetailsBedRoomData(bedRoom);
     }
   };
 
@@ -132,53 +174,73 @@ function HomeDetails({ menuTitle, setTempHomes, homes, handleSwitch }) {
   };
 
   const handleMinimumPrice = (newValue) => {
-    const newSliderValue = [...sliderValue];
+    const newSliderValue = [...homeDetailsSliderValue];
     newSliderValue[0] = newValue;
-    setSliderValue(newSliderValue);
+    setHomeDetailsSliderValue(newSliderValue);
   };
 
   const handleMaximumPrice = (newValue) => {
-    const newSliderValue = [...sliderValue];
+    const newSliderValue = [...homeDetailsSliderValue];
     newSliderValue[1] = newValue;
-    setSliderValue(newSliderValue);
+    setHomeDetailsSliderValue(newSliderValue);
   };
 
   const handlePriceSliderChange = (event, newValue) => {
-    setSliderValue(newValue);
+    setHomeDetailsSliderValue(newValue);
   };
+  const tickIcon = [];
 
   function handleHomeDetails() {
     let filteredHomes = homes;
     if (bathRoomData >= 1) {
+      tickIcon.push(true);
       filteredHomes = homes?.filter((home) => home.minBath >= bathRoomData);
       filteredHomes = handleSwitch("featured", filteredHomes);
     }
-    if (bedRoomData >= 1) {
+    if (homeDetailsBedRoomData >= 1) {
+      tickIcon.push(true);
       filteredHomes = filteredHomes?.filter(
-        (home) => home.minBeds >= bedRoomData
+        (home) => home.minBeds >= homeDetailsBedRoomData
       );
     }
     if (garageData >= 1) {
+      tickIcon.push(true);
       filteredHomes = filteredHomes.filter((home) => home.garage >= garageData);
     }
-    if (sliderValue[0] >= 1) {
+    if (homeDetailsSliderValue[0] >= 1) {
+      tickIcon.push(true);
       filteredHomes = filteredHomes?.filter(
         (item) =>
-          item.minSqFt >= sliderValue[0] && item.minSqFt <= sliderValue[1]
+          item.minSqFt >= homeDetailsSliderValue[0] &&
+          item.minSqFt <= homeDetailsSliderValue[1]
       );
     }
     setTempHomes(handleSwitch("featured", filteredHomes));
+    const handleTick = tickIcon.find((tick) => {
+      return tick === true;
+    });
+
+    sethandleHomeDetailsTickIcon(handleTick);
   }
 
   useEffect(() => {
     handleHomeDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bathRoomData, bedRoomData, garageData, sliderValue[0], sliderValue[1]]);
+  }, [
+    bathRoomData,
+    homeDetailsBedRoomData,
+    garageData,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    homeDetailsSliderValue[0],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    homeDetailsSliderValue[1],
+  ]);
 
   return (
     <div>
       <StyledButton onClick={handleClick}>
         {menuTitle}
+        {handleHomeDetailsTickIcon && <StyledCircleIcon fontSize="small" />}
         {anchorEl ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
       </StyledButton>
       <StyledMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
@@ -189,7 +251,7 @@ function HomeDetails({ menuTitle, setTempHomes, homes, handleSwitch }) {
             min={0}
             max={2000}
             slots={{ thumb: AirbnbThumbComponent }}
-            value={sliderValue}
+            value={homeDetailsSliderValue}
             onChange={handlePriceSliderChange}
           />
         </Box>
@@ -201,7 +263,7 @@ function HomeDetails({ menuTitle, setTempHomes, homes, handleSwitch }) {
         >
           <RedditTextField
             label="Minimum"
-            value={sliderValue[0]}
+            value={homeDetailsSliderValue[0]}
             onChange={(e) => handleMinimumPrice(e.target.value)}
             variant="filled"
             style={{ marginRight: 11, marginTop: 11 }}
@@ -209,7 +271,7 @@ function HomeDetails({ menuTitle, setTempHomes, homes, handleSwitch }) {
           -{" "}
           <RedditTextField
             label="Maximum"
-            value={sliderValue[1]}
+            value={homeDetailsSliderValue[1]}
             onChange={(e) => handleMaximumPrice(e.target.value)}
             variant="filled"
             style={{ marginLeft: 11, marginTop: 11 }}
@@ -227,7 +289,9 @@ function HomeDetails({ menuTitle, setTempHomes, homes, handleSwitch }) {
               key={i}
               sx={{
                 margin: "0.5rem 1rem 1rem 0rem",
-                backgroundColor: `${bedRoomData === room ? "#DFF498" : ""}`,
+                backgroundColor: `${
+                  homeDetailsBedRoomData === room ? "#DFF498" : ""
+                }`,
               }}
               onClick={() => toggleBedroom(room)}
             >

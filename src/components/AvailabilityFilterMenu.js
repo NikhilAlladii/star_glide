@@ -1,5 +1,6 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -8,6 +9,7 @@ import { Typography } from "@mui/material";
 import { styled } from "styled-components";
 import { StyledButton } from "../containers/Homes";
 import theme from "../theme/theme";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 export const StyledMenu = styled(Menu)`
   .MuiPaper-root {
@@ -28,27 +30,28 @@ export const StyledMenu = styled(Menu)`
   }
 `;
 
+const StyledCircleIcon = styled(CheckCircleOutlineIcon)`
+  margin-left: 0.5rem;
+  background-color: rgb(235 245 194);
+  opacity: 0.7;
+  width: 1rem !important;
+  height: 1rem !important;
+  padding: 0.1rem !important;
+  border-radius: 50%;
+`;
+
 function AvailabilityFilterMenu({
   menuTitle,
   setTempHomes,
   homes,
   handleSwitch,
+  availabilityFilterMenu,
+  setAvailabilityFilterMenu,
+  handleAvailabilityTickIcon,
+  setAvailabilityTickHandleIcon,
 }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [availabilityFilterMenu, setAvailabilityFilterMenu] = useState([
-    {
-      label: "Move In Ready",
-      id: "moveInReady",
-      checked: false,
-      value: "moveInReady",
-    },
-    {
-      label: "Ready To Build",
-      id: "readyToBuild",
-      checked: false,
-      value: "readyToBuild",
-    },
-  ]);
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -70,12 +73,31 @@ function AvailabilityFilterMenu({
         item.readyToBuild === availabilityFilterMenu[1].checked
     );
     setTempHomes(handleSwitch("featured", filteredArray));
+    setAvailabilityFilterMenu([...availabilityFilterMenu]);
   };
+
+  const tickIcon = [];
+
+  useEffect(() => {
+    availabilityFilterMenu.map((menu) => {
+      tickIcon.push(menu.checked);
+    });
+
+    const handleTick = tickIcon.find((tick) => {
+      return tick === true;
+    });
+
+    setAvailabilityTickHandleIcon(handleTick);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [availabilityFilterMenu]);
+
+  // console.log("icon->", availabilityFilterMenu);
 
   return (
     <div>
       <StyledButton onClick={handleClick}>
         {menuTitle}
+        {handleAvailabilityTickIcon && <StyledCircleIcon fontSize="small" />}
         {anchorEl ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
       </StyledButton>
       <StyledMenu anchorEl={anchorEl} open={open} onClose={handleClose}>

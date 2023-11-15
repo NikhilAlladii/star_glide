@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable array-callback-return */
+import React, { useEffect } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -7,6 +8,7 @@ import { Box, Typography } from "@mui/material";
 import { styled } from "styled-components";
 import { StyledButton } from "../containers/Homes";
 import theme from "../theme/theme";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const StyledMenu = styled(Menu)`
   .MuiPaper-root {
@@ -27,7 +29,30 @@ const StyledMenu = styled(Menu)`
   }
 `;
 
-function MoreFilters({ menuTitle, homes, handleSwitch, setTempHomes }) {
+const StyledCircleIcon = styled(CheckCircleOutlineIcon)`
+  margin-left: 0.5rem;
+  background-color: rgb(235 245 194);
+  opacity: 0.7;
+  width: 1rem !important;
+  height: 1rem !important;
+  padding: 0.1rem !important;
+  border-radius: 50%;
+`;
+
+function MoreFilters({
+  menuTitle,
+  homes,
+  handleSwitch,
+  setTempHomes,
+  setAmentiesFilterMenu,
+  amentiesFilterMenu,
+  setNeighbourHoodFilterMenu,
+  neighbourHoodFilterMenu,
+  setTourOptionsFilterMenu,
+  tourOptionsFilterMenu,
+  handleMoreFiltersTickIcon,
+  setMoreFiltersTickHandleIcon,
+}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -36,69 +61,6 @@ function MoreFilters({ menuTitle, homes, handleSwitch, setTempHomes }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  const [tourOptionsFilterMenu, setTourOptionsFilterMenu] = useState([
-    {
-      label: "Virtual Tour / Visualizer Available",
-      id: "virtualOptions",
-      checked: false,
-      value: "virtualOptions",
-    },
-  ]);
-
-  const [neighbourHoodFilterMenu, setNeighbourHoodFilterMenu] = useState([
-    {
-      label: "Located Within a Planned Community",
-      id: "plannedCommunity",
-      checked: false,
-      value: "plannedCommunity",
-    },
-    {
-      label: "Single Story Homes",
-      id: "singleStoryHomes",
-      checked: false,
-      value: "singleStoryHomes",
-    },
-    {
-      label: "Townhomes & Condos",
-      id: "townHomes",
-      checked: false,
-      value: "townHomes",
-    },
-  ]);
-
-  const [amentiesFilterMenu, setAmentiesFilterMenu] = useState([
-    {
-      label: "Community Center / Clubhouse",
-      id: "communityCenter",
-      checked: false,
-      value: "communityCenter",
-    },
-    {
-      label: "Community Pool",
-      id: "communityPool",
-      checked: false,
-      value: "communityPool",
-    },
-    {
-      label: "Lakes & Ponds",
-      id: "lakes",
-      checked: false,
-      value: "lakes",
-    },
-    {
-      label: "Parks & Nature Areas",
-      id: "parks",
-      checked: false,
-      value: "parks",
-    },
-    {
-      label: "Sport Facilities",
-      id: "sportsFacility",
-      checked: false,
-      value: "sportsFacility",
-    },
-  ]);
 
   const handleTourOptions = (e) => {
     const targetIndex = tourOptionsFilterMenu.findIndex(
@@ -127,8 +89,9 @@ function MoreFilters({ menuTitle, homes, handleSwitch, setTempHomes }) {
     setAmentiesFilterMenu(newArray);
   };
 
-
   const handleMoreDetails = () => {
+
+
     let filteredHomes = homes;
     if (tourOptionsFilterMenu.length >= 0) {
       filteredHomes = homes?.filter(
@@ -156,7 +119,6 @@ function MoreFilters({ menuTitle, homes, handleSwitch, setTempHomes }) {
         });
       });
       filteredHomes = handleSwitch("featured", filteredHomes);
-
     }
 
     if (amentiesFilterMenu.length >= 0) {
@@ -180,13 +142,35 @@ function MoreFilters({ menuTitle, homes, handleSwitch, setTempHomes }) {
 
   useEffect(() => {
     handleMoreDetails();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    const tickIcon = [];
+
+    amentiesFilterMenu.map((menu) => {
+      tickIcon.push(menu.checked);
+    });
+
+    neighbourHoodFilterMenu.map((menu) => {
+      tickIcon.push(menu.checked);
+    });
+
+    tourOptionsFilterMenu.map((menu) => {
+      tickIcon.push(menu.checked);
+    });
+
+    const handleTick = tickIcon.find((tick) => {
+      return tick === true;
+    });
+
+    setMoreFiltersTickHandleIcon(handleTick);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tourOptionsFilterMenu, neighbourHoodFilterMenu, amentiesFilterMenu]);
 
   return (
     <div>
       <StyledButton onClick={handleClick}>
         {menuTitle}{" "}
+        {handleMoreFiltersTickIcon && <StyledCircleIcon fontSize="small" />}
         {anchorEl ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
       </StyledButton>
       <StyledMenu anchorEl={anchorEl} open={open} onClose={handleClose}>

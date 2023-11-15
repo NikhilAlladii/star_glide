@@ -5,12 +5,23 @@ import Box from "@mui/material/Box";
 import Menu from "@mui/material/Menu";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Typography } from "@mui/material";
+import { InputAdornment, Typography } from "@mui/material";
 import { styled } from "styled-components";
 import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
 import { StyledButton } from "../containers/Homes";
 import theme from "../theme/theme";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+
+const StyledCircleIcon = styled(CheckCircleOutlineIcon)`
+  margin-left: 0.5rem;
+  background-color: rgb(235 245 194);
+  opacity: 0.7;
+  width: 1rem !important;
+  height: 1rem !important;
+  padding: 0.1rem !important;
+  border-radius: 50%;
+`;
 
 const StyledMenu = styled(Menu)`
   .MuiPaper-root {
@@ -55,7 +66,17 @@ const AirbnbSlider = styled(Slider)(() => ({
 }));
 
 const PriceMinimumTextField = styled((props) => (
-  <TextField InputProps={{ disableUnderline: true }} {...props} />
+  <TextField
+    InputProps={{
+      disableUnderline: true,
+      startAdornment: (
+        <InputAdornment sx={{ paddingTop: "1rem" }} position="end">
+          $
+        </InputAdornment>
+      ),
+    }}
+    {...props}
+  />
 ))(({ theme }) => ({
   width: "150px",
   "& .MuiFilledInput-root": {
@@ -65,7 +86,17 @@ const PriceMinimumTextField = styled((props) => (
 }));
 
 const PriceMaximumTextField = styled((props) => (
-  <TextField InputProps={{ disableUnderline: true }} {...props} />
+  <TextField
+    InputProps={{
+      disableUnderline: true,
+      startAdornment: (
+        <InputAdornment sx={{ paddingTop: "1rem" }} position="end">
+          $
+        </InputAdornment>
+      ),
+    }}
+    {...props}
+  />
 ))(({ theme }) => ({
   width: "150px",
   "& .MuiFilledInput-root": {
@@ -90,9 +121,17 @@ AirbnbThumbComponent.propTypes = {
   children: PropTypes.node,
 };
 
-function PriceRange({ menuTitle, homes, handleSwitch, setTempHomes }) {
+function PriceRange({
+  menuTitle,
+  homes,
+  handleSwitch,
+  setTempHomes,
+  handlePricerangeTickIcon,
+  setPricerangeTickIcon,
+  sliderValue,
+  setSliderValue,
+}) {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [sliderValue, setSliderValue] = useState([0, 1000]);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -117,11 +156,23 @@ function PriceRange({ menuTitle, homes, handleSwitch, setTempHomes }) {
     setSliderValue(newSliderValue);
   };
 
+  const tickIcon = [];
+
+  const handleTickIcon = () => {
+    if (sliderValue[0] > 1 || sliderValue[1] < 1000) {
+      tickIcon.push(true);
+    }
+    const handleTick = tickIcon.find((tick) => {
+      return tick === true;
+    });
+    setPricerangeTickIcon(handleTick);
+  };
+
   useEffect(() => {
     const filteredArray = homes?.filter(
       (item) => item.price >= sliderValue[0] && item.price <= sliderValue[1]
     );
-
+    handleTickIcon();
     setTempHomes(handleSwitch("featured", filteredArray));
   }, [sliderValue[0], sliderValue[1]]);
 
@@ -129,6 +180,7 @@ function PriceRange({ menuTitle, homes, handleSwitch, setTempHomes }) {
     <div>
       <StyledButton onClick={handleClick}>
         {menuTitle}
+        {handlePricerangeTickIcon && <StyledCircleIcon fontSize="small" />}
         {anchorEl ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
       </StyledButton>
       <StyledMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
